@@ -54,6 +54,7 @@ passport.use(new Auth0Strategy({
     db.find_user([sub]).then( response => {
         console.log(sub)
         if(response[0]){
+            console.log("step here", response[0].id)
             done(null, response[0].id)
         }else{
             db.create_user([ sub ]).then( response => {
@@ -64,12 +65,13 @@ passport.use(new Auth0Strategy({
 }))
 
 passport.serializeUser( (id, done)=> {
+    console.log('I think we got here')
     done(null, id);
 })
 
 passport.deserializeUser( (id, done) =>{
+    console.log('but I am not sure if we got HERE')
     const db = app.get('db');
-    console.log(id)
     db.find_logged_in_user([id]).then( response => {
         done(null, response[0])  
     })
@@ -77,7 +79,7 @@ passport.deserializeUser( (id, done) =>{
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: process.env.CHECK_USER
+    successRedirect: process.env.LOGIN_HOME
 }))
 
 app.get('/auth/me', (req, res) => {

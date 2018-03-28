@@ -19,4 +19,4 @@ export default class Landing extends Component {
   }
   
 
-export default Landing;
+
