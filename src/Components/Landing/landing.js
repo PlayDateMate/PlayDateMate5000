@@ -15,4 +15,8 @@ export default class Landing extends Component {
                  </section>
         )
     }
-}
+
+  }
+  
+
+export default Landing;
