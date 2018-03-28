@@ -18,7 +18,7 @@ class Children extends Component {
   render() {
     return (
       <div className="Children">
-        
+        Children
       </div>
     );
   }
