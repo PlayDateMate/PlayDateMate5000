@@ -9,6 +9,8 @@ const massive = require('massive');
 const axios = require('axios');
 const path = require('path');
 
+const event_controller = require('./controllers/event_controller');
+
 const  {
     SERVER_PORT,
     SESSION_SECRET, 
@@ -89,6 +91,17 @@ app.get('/auth/me', (req, res) => {
         res.status(200).send(req.user);
     }
 })
+
+app.get('/getUserInfo', (req, res)=>{
+    const db = app.get('db');
+    console.log('can you find me?', req.user)
+    db.get_user([req.user.id]).then(response =>{
+        res.status(200).send(response)
+    }).catch('cannot find user!')
+})
+
+
+app.post('/api/events/create', event_controller.createEvent)
 
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
