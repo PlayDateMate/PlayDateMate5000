@@ -18,7 +18,7 @@ class profile extends Component {
   render() {
     return (
       <div className="profile">
-        
+        profile
       </div>
     );
   }
