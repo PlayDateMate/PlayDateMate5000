@@ -1,0 +1,45 @@
+.main-nav {
+    width: 100vw;
+    height: 50px;
+    background-color: #3b5998;
+    text-align: center;
+}
+
+
+.info-seciton{
+    align-items: center;
+}
+
+.find-friends{
+    background-color: #3b5998;
+    border-radius: 4px 4px 4px 4px;
+    height: 50px;
+    width: 140px;
+    margin-top: 20px;
+    font-size: 15px
+}
+
+
+.friend-requests {
+    margin: 20px 0px 0px 16px;
+    border: 2px;
+    border-width: medium;
+    border-color: black;
+    border-style: solid;
+    height: 20vh;
+    width: 90vw;
+}
+
+.friend-filter {
+    margin: 20px 0px 0px 16px;
+    border: 2px;
+    border-width: medium;
+    border-color: black;
+    border-style: solid;
+    height: 40vh;
+    width: 90vw;
+}
+
+
+
+                /*=========== FRIENDS SEARCH CSS ===========*/
