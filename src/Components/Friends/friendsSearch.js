@@ -6,14 +6,17 @@ import 'react-rangeslider/lib/index.css'
 
 
 class FriendsSearch extends Component {
+
   constructor(props, context) {
     super(props, context)
     this.state = {
       value1: 1,
-      value2: 1
-      
+      value2: 1,
+      name: '',
     }
+
   }
+
   handleChange1 = (value1) => {
     this.setState({
       value1: value1
@@ -24,6 +27,18 @@ class FriendsSearch extends Component {
       value2: value2
     })
   }
+
+
+  // onPress(){
+
+  // }
+
+  nameInput(val) {
+    console.log(val);
+    this.setState({
+        name: val
+    })
+}
   render () {
     const { value1, value2 } = this.state
     return (
@@ -37,8 +52,8 @@ class FriendsSearch extends Component {
 
         <div className="search">
           <div>Search by:</div>
-          <button className="friends-button">Zip Code</button>
-          <button className="friends-button search-buttons">Name</button>
+          <input type="text" className= "input" />
+          <button className="friends-button search">Search</button>
         </div>
 
         
