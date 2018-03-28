@@ -7,6 +7,7 @@ import Events from './Components/Events/events';
 import Children from './Components/Children/children'
 import Friends from './Components/Friends/friends'
 import Profile from './Components/Profile/profile'
+import FriendSearch from './Components/Friends/friendsSearch'
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
             <Route path = '/dashboard' component = {Dashboard}/>
             <Route path = '/profile' component = {Profile}/>   
             <Route path = '/friends' component = {Friends}/>
-            <Route path = '/children' component = {Children}/>        
+            <Route path = '/children' component = {Children}/> 
+            <Route path = '/friendsearch' component = {FriendSearch} />    
 
 
           </Switch>
