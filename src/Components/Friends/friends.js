@@ -29,7 +29,7 @@ class Friends extends Component {
                     {/* ROUTES TO FRIEND SEARCH */}
           {/* <Link to='/friendssearch'><button className="find-friends">Find Friends</button></Link> */}
 
-          <button className="find-friends">Find Friends</button>
+          <button className="friends-button">Find Friends</button>
 
 
           <div className="friend-requests">
