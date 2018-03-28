@@ -9,7 +9,7 @@ const massive = require('massive');
 const axios = require('axios');
 const path = require('path');
 
-const event_controller = require('./controllers/event_controller');
+// const event_controller = require('./controllers/event_controller');
 
 const  {
     SERVER_PORT,
@@ -52,14 +52,15 @@ passport.use(new Auth0Strategy({
     scope: 'openid profile'
 }, function(accessToken, refreshToken, extraParams, profile, done){
     const db = app.get('db');
-    const { sub } = profile._json;
+    const { user_name, image, sub } = profile._json;
     db.find_user([sub]).then( response => {
         console.log(sub)
         if(response[0]){
             console.log("step here", response[0].id)
             done(null, response[0].id)
         }else{
-            db.create_user([ sub ]).then( response => {
+            console.log()
+            db.create_user([ user_name, image, sub ]).then( response => {
                 done(null, response[0].id)
             })
         }
@@ -101,7 +102,7 @@ app.get('/getUserInfo', (req, res)=>{
 })
 
 
-app.post('/api/events/create', event_controller.createEvent)
+// app.post('/api/events/create', event_controller.createEvent)
 
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
