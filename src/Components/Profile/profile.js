@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './profile.css';
-
+import {Link } from 'react-router-dom';
 
 
 
@@ -17,8 +17,17 @@ class profile extends Component {
 
   render() {
     return (
-      <div className="profile">
-        profile
+      <div className='profileMain'>
+        <header className='profileHeader'>
+          <Link to="/dashboard">
+            <button>Home</button>
+          </Link>
+            Profile Header
+        </header>
+        <div className="profileBody">
+          
+          There will be things in here...
+        </div>
       </div>
     );
   }
