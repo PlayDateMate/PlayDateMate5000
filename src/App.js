@@ -4,10 +4,10 @@ import { HashRouter, Route, Switch} from 'react-router-dom';
 import Landing from './Components/Landing/landing';
 import Dashboard from './Components/Dashboard/dashboard';
 import Events from './Components/Events/events';
-import Children from './Components/Children/children';
-import Friends from './Components/Friends/friends';
-import Profile from './Components/Profile/profile';
-import CreateEvent from './Components/Events/CreateEvent';
+import Children from './Components/Children/children'
+import Friends from './Components/Friends/friends'
+import Profile from './Components/Profile/profile'
+import FriendSearch from './Components/Friends/friendsSearch'
 
 class App extends Component {
   render() {
@@ -21,9 +21,8 @@ class App extends Component {
             <Route path = '/dashboard' component = {Dashboard}/>
             <Route path = '/profile' component = {Profile}/>   
             <Route path = '/friends' component = {Friends}/>
-            <Route path = '/children' component = {Children}/>        
-            <Route path = '/events' component = {Events}/>        
-            <Route path = '/createevent' component = { CreateEvent }/>        
+            <Route path = '/children' component = {Children}/> 
+            <Route path = '/friendsearch' component = {FriendSearch} />    
 
 
           </Switch>
