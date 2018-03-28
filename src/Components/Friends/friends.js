@@ -18,7 +18,7 @@ class Friends extends Component {
   render() {
     return (
       <div className="Friends">
-        
+        friends
       </div>
     );
   }

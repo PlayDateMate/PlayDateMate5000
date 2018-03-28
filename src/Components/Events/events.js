@@ -18,7 +18,7 @@ class Events extends Component {
   render() {
     return (
       <div className="Events">
-        
+        Dashboard
       </div>
     );
   }
