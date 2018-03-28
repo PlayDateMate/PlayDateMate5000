@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import './landing.css';
 
-
-
-
-class Landing extends Component {
-  constructor(){
-    super();
-
-    this.state = {
-
-    }
-
-  }
-  
-
-  render() {
-    return (
-      <div className="landing">
+export default class Landing extends Component {
+    render() {
         
-      </div>
-    );
-  }
-}
+        return (
+                <section className='App'>  
+               
+                    <div className='home_box'>
 
-export default Landing;
+                        <a id="login_button" className='login_button' href={ process.env.REACT_APP_LOGIN }>LOGIN</a>
+
+                    </div>
+                 </section>
+        )
+    }
+}
