@@ -115,6 +115,7 @@ app.post('/api/events', event_controller.createEvent)
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
 // });
 
+
 app.listen(SERVER_PORT, ()=> console.log(`The server is running WITHOUT NATIVE ERRORS on ${SERVER_PORT}`))
 
 
