@@ -9,7 +9,7 @@ const massive = require('massive');
 const axios = require('axios');
 const path = require('path');
 
-// const event_controller = require('./controllers/event_controller');
+const event_controller = require('./controllers/event_controller');
 
 const  {
     SERVER_PORT,
@@ -102,7 +102,7 @@ app.get('/getUserInfo', (req, res)=>{
 })
 
 
-// app.post('/api/events/create', event_controller.createEvent)
+app.post('/api/events', event_controller.createEvent)
 
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));

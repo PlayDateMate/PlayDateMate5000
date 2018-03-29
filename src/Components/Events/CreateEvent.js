@@ -9,78 +9,64 @@ export default class CreateEvent extends Component{
         super(props);
 
         this.state = {
-            nameInput: '',
-            descriptionInput: '',
-            startdateInput: '',
-            enddateInput: '',
-            minageInput: '',
-            maxageInput: '',
-            addressInput: '',
-            cityInput: '',
-            zipcodeInput: '',
-            privacyInput: '',
-
-            events: {
-                id: 1,
-                event_name: '',
-                event_description: '',
-                start_date: '',
-                end_date: '',
-                age_min: '',
-                age_max: '',
-                address: '',
-                city: '',
-                zipcode: '',
-                privacy: '',
-                user_id: 1
-            }
-            
+            event_name: '',
+            event_description: '',
+            start_date: '',
+            end_date: '',
+            age_min: '',
+            age_max: '',
+            address: '',
+            city: '',
+            zipcode: '',
+            privacy: '',
+            events: []   
         }
+
     this.handleInput = this.handleInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
     }
 
     handleInput(event) {
-        this.setState({[event.target.name]: event.target.value})
+        this.setState({event_name: event.target.value})
+        this.setState({event_description: event.target.value})
+        
     }
  
     onSubmit(event) {
         axios.post('/api/events', {
-            event_name: this.state.nameInput, 
-            event_description: this.state.descriptionInput, 
-            start_date: this.state.startdateInput, 
-            end_date: this.state.enddateInput, 
-            age_min: this.state.minageInput, 
-            age_max: this.state.maxageInput, 
-            address: this.state.addressInput, 
-            city: this.state.cityInput, 
-            zipcode: this.state.zipcodeInput, 
-            privacy: this.state.privacyInput
+            event_name: this.state.event_name, 
+            event_description: this.state.event_description, 
+            start_date: this.state.start_date, 
+            end_date: this.state.end_date, 
+            age_min: this.state.age_min, 
+            age_max: this.state.age_max, 
+            address: this.state.address, 
+            city: this.state.city, 
+            zipcode: this.state.zipcode, 
+            privacy: this.state.privacy
             })
-            .then((response) => {
-            console.log(response.data);
-            this.setState({events: response.data[0]})
-            this.props.history.push('/events')
-                return response.data
+            .then((resp) => {
+            console.log(resp.data);
+            this.setState({events: resp.data})
+            // this.props.history.push('/events')
+                return resp.data
             }).catch(console.log);
         }
 
-
-
     render(){
-        let events = this.state.events;
         return(
             <div className="main_container">
                 <header>Create Event </header> <br />
-                <div className="form-container">
+                <div onSubmit={this.onSubmit}>
                 
-                    <div className="name_input"><input name="nameInput" placeholder="Event Name" onChange={(event) => this.handleInput(event)} type="text" value={this.state.nameInput} /></div> <br />
-                    <div className="desc_input" ><textarea name="dobInput" placeholder="Event Description" onChange={(event) => this.handleInput(event)} type="text" value={this.state.descriptionInput} /> </div> <br />
+                    <div className="name_input"><input placeholder="Event Name" onChange={this.handleInput} type="text" /></div> <br />
+                    <div className="desc_input" ><textarea placeholder="Event Description" onChange={this.handleInput} type="text" /> </div> <br />
                     
                        
                     <div className="dates">
-                        <div className="start_date" ><input name="startdateInput" placeholder="Start Date" onChange={(event) => this.handleInput(event)} type="text" value={this.state.startdateInput} /> </div>
-                        <div className="end_date" ><input name="enddateInput" placeholder="End Date" onChange={(event) => this.handleInput(event)} type="text" value={this.state.enddateInput} /> </div>
+                        <div className="start_date" ><input name="startdateInput" placeholder="Start Date" type="date" onChange={(event) => this.handleInput(event)} type="text" value={this.state.startdateInput} /> </div>
+                        <div className="end_date" ><input name="enddateInput" placeholder="End Date" type="date" onChange={(event) => this.handleInput(event)} type="text" value={this.state.enddateInput} /> </div>
                     </div><br />
                     <div className="ages">
                         <div className="min_age" ><input name="minageInput" placeholder="Minimum age" onChange={(event) => this.handleInput(event)} type="text" value={this.state.minageInput} /> </div>
