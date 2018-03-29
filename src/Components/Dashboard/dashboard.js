@@ -16,7 +16,6 @@ class Dashboard extends Component {
   
 
   render() {
-    console.log(this.props.latitude)
     return (
       <div className="Dashboard">
         
