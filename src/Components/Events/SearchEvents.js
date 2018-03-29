@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './events.css';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
+import Modal from 'react-modal';
 
 
 
@@ -10,22 +11,35 @@ class SearchEvents extends Component {
     super(props, context)
     this.state = {
       value1: 1,
-      value2: 1
+      value2: 1,
+      showModal: false
       
     }
   }
+
   handleChange1 = (value1) => {
     this.setState({
       value1: value1
     })
   }
+
   handleChange2 = (value2) => {
     this.setState({
       value2: value2
     })
   }
+
+toggleModal = () => {
+  this.setState({
+    showModal: !this.state.showModal
+  });
+}
+
+
   render () {
-    const { value1, value2 } = this.state
+
+    const { value1, value2, showModal } = this.state
+
     return (
       <div className='friends'>
     
@@ -34,11 +48,17 @@ class SearchEvents extends Component {
           <div></div>
         </header>
           
-
+        <h4>Search by:</h4>
         <div className="search">
-          <h4>Search by:</h4>
-          <button className="friends-button">Zip Code</button>
-          <button className="friends-button search-buttons">Name</button>
+          <div>
+            <button className="search_by_zipcode" onClick={this.toggleModal} > Zip Code </button>
+              <Modal show={this.state.showModal}
+                onClose={this.toggleModal}>
+                <input className="modal_input">Search by Zipcode or Name</input>
+              </Modal>
+          </div>
+
+          <button className="search_by_name">Name</button>
         </div>
 
         
@@ -63,11 +83,11 @@ class SearchEvents extends Component {
             onChange={this.handleChange2}
           />
           <div className='value'>{value2}</div>
-        </div>
+        </div> <br />
                           {/* END OF FILTER */}
 
-          <div>
-            <div className="results">Search Results</div>
+          <div className="results">
+            <div>Search Results</div>
           </div>
 
       </div>
