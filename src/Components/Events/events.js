@@ -30,15 +30,15 @@ class Events extends Component {
           <Link to="searchevents"><button className="search_events_btn" onClick={ () => this.onSubmit() }>Search Events</button></Link>
         </div> <br />
 
-        <p> Invitations <br/> <div className="invitations">
+        <h5> Invitations <br/> <div className="invitations">
           
-        </div> </p><br />
-        <p> Upcoming Events <br/> <div className="upcoming_events">
+        </div> </h5><br />
+        <h5> Upcoming Events <br/> <div className="upcoming_events">
 
-        </div> </p> <br />
-        <p> My Events <br/> <div className="my_events">
+        </div> </h5> <br />
+        <h5> My Events <br/> <div className="my_events">
 
-        </div> </p> <br />
+        </div> </h5> <br />
 
       </div>
     );

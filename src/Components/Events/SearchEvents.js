@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import './friends.css';
+import './events.css';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 
 
 
-class FriendsSearch extends Component {
-
+class SearchEvents extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
       value1: 1,
-      value2: 1,
-      name: '',
+      value2: 1
+      
     }
-
   }
-
   handleChange1 = (value1) => {
     this.setState({
       value1: value1
@@ -27,39 +24,27 @@ class FriendsSearch extends Component {
       value2: value2
     })
   }
-
-
-  // onPress(){
-
-  // }
-
-  nameInput(val) {
-    console.log(val);
-    this.setState({
-        name: val
-    })
-}
   render () {
     const { value1, value2 } = this.state
     return (
       <div className='friends'>
     
         <header className="main-nav">
-          <div>Find Friends</div>
+          <div>Search Events</div>
           <div></div>
         </header>
           
 
         <div className="search">
-          <div>Search by:</div>
-          <input type="text" className= "input" />
-          <button className="friends-button search">Search</button>
+          <h4>Search by:</h4>
+          <button className="friends-button">Zip Code</button>
+          <button className="friends-button search-buttons">Name</button>
         </div>
 
         
                           {/* FILTERS */}
         <div className='slider'>
-          <h2>Filter by children age</h2>
+          <h4>Filter by age</h4>
           <Slider
             min={2}
             max={12}
@@ -69,7 +54,7 @@ class FriendsSearch extends Component {
           />
           <div className='value'>{value1}</div>
 
-          <h2>Filter by distance</h2>
+          <h4>Filter by distance</h4>
           <Slider
             min={2}
             max={12}
@@ -81,8 +66,8 @@ class FriendsSearch extends Component {
         </div>
                           {/* END OF FILTER */}
 
-          <div className="results">
-            <div>Results</div>
+          <div>
+            <div className="results">Search Results</div>
           </div>
 
       </div>
@@ -91,4 +76,4 @@ class FriendsSearch extends Component {
 
 }
 
-export default FriendsSearch;
+export default SearchEvents;
