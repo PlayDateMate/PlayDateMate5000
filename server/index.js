@@ -9,6 +9,7 @@ const massive = require('massive');
 const axios = require('axios');
 const path = require('path');
 
+const children_controller = require('./controllers/children_controller')
 const event_controller = require('./controllers/event_controller');
 
 const  {
@@ -92,7 +93,7 @@ app.get('/auth/me', (req, res) => {
         res.status(200).send(req.user);
     }
 })
-
+// ******************* Loading user endpoint************************
 app.get('/getUserInfo', (req, res)=>{
     const db = app.get('db');
     console.log('can you find me?', req.user)
@@ -102,6 +103,12 @@ app.get('/getUserInfo', (req, res)=>{
 })
 
 
+//******************* Children Endpoints ****************************
+app.get('/getchildren/:id', children_controller.getChild)
+
+
+
+//******************* Events Endpoints ******************************
 app.post('/api/events', event_controller.createEvent)
 
 // app.get('*', (req, res)=>{
