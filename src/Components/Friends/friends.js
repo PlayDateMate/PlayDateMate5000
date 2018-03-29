@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './friends.css';
 import { Link } from 'react-router-dom'
 import './friendsSearch'
+import axios from 'axios'
 
 
 
@@ -11,10 +12,20 @@ class Friends extends Component {
     super();
 
     this.state = {
-      
+      user_name: '',
+      id: ''
     }
   }
-  
+  async componentDidMount(){
+    console.log("test front")
+    await axios.get('/getUserInfo/').then((response)=>{
+        console.log('did we get this?',response)
+        this.setState({
+            user_name: response.data[0].user_name,
+            id: response.data[0].id
+        })
+    })
+}
 
   render() {
     return (
@@ -27,7 +38,7 @@ class Friends extends Component {
         <section className="info-section">
 
                     {/* ROUTES TO FRIEND SEARCH */}
-          <Link to='/friendsearch'><button className="find-friends">Find Friends</button></Link>
+          <Link to={`/friendsearch/${this.state. id}`}><button className="friends-button">Find Friends</button></Link>
 
 
           <div className="friend-requests">
