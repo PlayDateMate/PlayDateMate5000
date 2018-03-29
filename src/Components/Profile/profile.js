@@ -91,6 +91,11 @@ onSave(){
          <div></div>
         }
         </div>
+        <div>
+          <Link to={`/addchild/${this.props.match.params.id}`}>
+          <button>Add Child +</button>
+          </Link>
+        </div>
       </div>
     );
   }
