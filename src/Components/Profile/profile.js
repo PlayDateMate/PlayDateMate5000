@@ -54,7 +54,7 @@ onSave(){
           <span>{child.child_name}</span>
 
           <span>{child.age}</span>
-          <Link to={`/children/${child}`} >
+          <Link to={`/children/${child.id}`} >
           <button>Update</button>
           </Link>
         </div>
