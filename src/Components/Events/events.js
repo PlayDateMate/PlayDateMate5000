@@ -11,7 +11,8 @@ class Events extends Component {
     super();
 
     this.state = {
-      user_id: ''
+      user_id: '',
+      
     }
 
   }
