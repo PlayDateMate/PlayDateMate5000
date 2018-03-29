@@ -48,6 +48,7 @@ export default class CreateEvent extends Component{
         })
     }
 
+
     onSubmit(event) {
         axios.post('/api/events', {
             event_name: this.state.event_name, 
@@ -58,7 +59,8 @@ export default class CreateEvent extends Component{
             age_max: this.state.age_max, 
             address: this.state.address, 
             city: this.state.city, 
-            zipcode: this.state.zipcode, 
+            zipcode: this.state.zipcode,
+            user_id: this.props.match.params.id, 
             privacy: this.state.privacy
             })
             .then((resp) => {
@@ -133,7 +135,8 @@ export default class CreateEvent extends Component{
         }
     
 
-    render(){
+    render() {
+
         return(
             <div className="main_container">
                 <header>Create Event </header> <br />

@@ -128,6 +128,7 @@ app.get('/findUser/:id', friends_controller.findFriends)
 
 
 
+
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
 // });
