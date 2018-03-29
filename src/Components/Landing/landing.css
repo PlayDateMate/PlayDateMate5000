@@ -1,0 +1,55 @@
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400');
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+.landing{
+    background: url('SoapBubbles.jpg') no-repeat center center fixed;
+    background-size:cover;
+    width: 100%;
+    height: auto;
+}
+.title{
+    font-size: 100px;
+    font-family:'Pacifico';
+    font-weight: 100;
+    color: rgb(255, 255, 255);
+    line-height: 120px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+.home_box{
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login_button{
+    border:3px solid white;
+    color: white;
+    font-size: 30px;
+    border-radius: 100px;
+    padding:5px;
+    background: white;
+    color: rgb(75, 75, 75);
+    font-family: 'Montserrat';
+    width:300px;
+    border: solid 1px rgb(59, 170, 204);
+    font-weight: 100;
+}
+.login_button:link,
+.login_button:visited{
+    text-decoration: none;
+}
+.centerbox{
+    background:rgba(128, 128, 128, 0.63);
+    padding: 20px;
+    width:100vw;
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
