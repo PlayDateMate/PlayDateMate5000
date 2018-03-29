@@ -21,7 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path = '/' component = {Landing}/>
             <Route path = '/dashboard' component = {Dashboard}/>
-            <Route path = '/profile' component = {Profile}/>   
+            <Route path = '/profile/:id' component = {Profile}/>   
             <Route path = '/friends/:id' component = {Friends}/>
             <Route path = '/children/:id' component = {Children}/> 
             <Route path = '/friendsearch/:id' component = {FriendSearch} />    

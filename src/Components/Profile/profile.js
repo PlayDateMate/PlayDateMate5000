@@ -15,21 +15,32 @@ class profile extends Component {
         email: '',
         profilePicture: '',
         canEdit: false, 
-        userId:'',
-        children: [{id:1, user_id: 5, age: 3, child_name: "Tino", interests: "fun things"},{id:2, user_id: 5, age: 60, child_name: "Bob", interests: "boring things"}]
+        userId: '',
+        children: []
     }
     this.onEdit = this.onEdit.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.getChildren = this.getChildren.bind(this);
 }
-async componentDidMount(){
-    console.log("test front")
+async componentWillMount(){
     await axios.get('/getUserInfo/').then((response)=>{
-        console.log('did we get this?',response)
+      console.log("herro",response)
         this.setState({
             name: response.data[0].user_name,
-            profilePicture: response.data[0].image
+            profilePicture: response.data[0].image,
+            userId: response.data[0].id
         })
+    }, this.getChildren())
+}
+
+getChildren(){
+  console.log('is this firing?', this.props.match.params.id )
+  axios.get(`/getchildren/${this.props.match.params.id}`).then(response=>{
+    console.log('did this work?...', response.data)
+    this.setState({
+      children: response.data
     })
+  })
 }
 
 onEdit(){
@@ -50,7 +61,7 @@ onSave(){
     
     let children = this.state.children.map((child, i)=>{
       return(
-        <div>
+        <div key={i}>
           <span>{child.child_name}</span>
 
           <span>{child.age}</span>
@@ -72,8 +83,13 @@ onSave(){
           <img src={this.state.profilePicture}/>
           <h3> Welcome, {this.state.name} </h3>
         </div>
-        <div>
+        <div>{this.state.children ?
+          <div>
          {children}
+         </div>
+         :
+         <div></div>
+        }
         </div>
       </div>
     );

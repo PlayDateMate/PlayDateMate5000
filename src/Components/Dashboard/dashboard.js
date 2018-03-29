@@ -31,7 +31,7 @@ class Dashboard extends Component {
     return (
       <div className='dashboardMain'>
         <header className='dashboardHeader'>
-          <Link to="/profile">
+          <Link to={`/profile/${this.state.id}`}>
             <button>Profile</button>
           </Link>
             Dashboard Header
