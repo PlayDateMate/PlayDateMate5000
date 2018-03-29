@@ -11,7 +11,7 @@ class Friends extends Component {
     super();
 
     this.state = {
-
+      
     }
   }
   
@@ -27,9 +27,7 @@ class Friends extends Component {
         <section className="info-section">
 
                     {/* ROUTES TO FRIEND SEARCH */}
-          {/* <Link to='/friendssearch'><button className="find-friends">Find Friends</button></Link> */}
-
-          <button className="friends-button">Find Friends</button>
+          <Link to='/friendsearch'><button className="find-friends">Find Friends</button></Link>
 
 
           <div className="friend-requests">
