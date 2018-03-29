@@ -22,9 +22,9 @@ class App extends Component {
             <Route exact path = '/' component = {Landing}/>
             <Route path = '/dashboard' component = {Dashboard}/>
             <Route path = '/profile' component = {Profile}/>   
-            <Route path = '/friends:/id' component = {Friends}/>
-            <Route path = '/children:/id' component = {Children}/> 
-            <Route path = '/friendsearch:/id' component = {FriendSearch} />    
+            <Route path = '/friends/:id' component = {Friends}/>
+            <Route path = '/children/:id' component = {Children}/> 
+            <Route path = '/friendsearch/:id' component = {FriendSearch} />    
             <Route path = '/events/:id' component = {Events} />    
             <Route path = '/createevent/:id' component = {CreateEvent} />    
             <Route path = '/searchevents/:id' component = {SearchEvents} />    

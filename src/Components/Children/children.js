@@ -11,14 +11,19 @@ class Children extends Component {
     this.state = {
 
     }
- console.log("Have you seen my children?",this.props.match.params)
+    
+
+  }
+  componentDidMount(){
+    
+console.log(this.props.match.params.id)    
   }
   
 
   render() {
     return (
       <div className="Children">
-        Children{this.props.id}
+        Children
       </div>
     );
   }
