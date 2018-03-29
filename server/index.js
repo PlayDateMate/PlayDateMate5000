@@ -9,8 +9,10 @@ const massive = require('massive');
 const axios = require('axios');
 const path = require('path');
 
-const children_controller = require('./controllers/children_controller')
+const children_controller = require('./controllers/children_controller');
 const event_controller = require('./controllers/event_controller');
+const location_controller = require('./controllers/location_controller');
+const friends_controller = require('./controllers/friends_controller');
 
 const  {
     SERVER_PORT,
@@ -93,7 +95,7 @@ app.get('/auth/me', (req, res) => {
         res.status(200).send(req.user);
     }
 })
-// ******************* Loading user endpoint************************
+// ******************* Loading user endpoint***********************
 app.get('/getUserInfo', (req, res)=>{
     const db = app.get('db');
     console.log('can you find me?', req.user)
@@ -103,13 +105,28 @@ app.get('/getUserInfo', (req, res)=>{
 })
 
 
-//******************* Children Endpoints ****************************
-app.get('/getchildren/:id', children_controller.getChild)
+//******************* Children Endpoints ***************************
+app.get('/getchildren/:id', children_controller.getChild);
+app.post('/addchild', children_controller.addChild);
+app.get('/getonechild/:id', children_controller.getOneChild)
 
 
 
-//******************* Events Endpoints ******************************
-app.post('/api/events', event_controller.createEvent)
+//******************* Events Endpoints *****************************
+app.post('/api/events', event_controller.createEvent);
+app.get('/api/user/:user_id/myevents', event_controller.getUserEvents)
+
+
+
+//******************** Dashboard Endpoints **************************
+app.put('/api/location',location_controller.updateLocation)
+
+
+
+//******************** Friends Endpoints ****************************
+app.get('/findUser/:id', friends_controller.findFriends)
+
+
 
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
