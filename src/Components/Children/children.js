@@ -11,14 +11,14 @@ class Children extends Component {
     this.state = {
 
     }
-
+ console.log("Have you seen my children?",this.props.match.params)
   }
   
 
   render() {
     return (
       <div className="Children">
-        Children
+        Children{this.props.id}
       </div>
     );
   }

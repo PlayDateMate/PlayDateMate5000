@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './profile.css';
 import {Link } from 'react-router-dom';
 import axios from 'axios'
+import Children from '../Children/children'
 
 
 
@@ -46,14 +47,16 @@ onSave(){
   
 
   render() {
-    let children = this.state.children.map((child)=>{
+    
+    let children = this.state.children.map((child, i)=>{
       return(
         <div>
           <span>{child.child_name}</span>
 
           <span>{child.age}</span>
-          
+          <Link to={`/children/${child}`} >
           <button>Update</button>
+          </Link>
         </div>
       )
     })
