@@ -1,20 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100');
 .dashboardMain{
     display: flex;
-    flex-direction: column;   
-}
-.dashboardHeader{
-    border: 1px solid blue;
-    background-color: blue;
-    height: 15vh;
-    width: 100vw;
-    
-    
-    
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center; 
 }
 
 .dashboardBody{
     display: flex;
     flex-direction: column;
-    width: 40vw;
-    
+    justify-content: space-between;
+    align-items: center;
+    height: 60vh;
+}
+
+.welcome-message{
+    font-family: 'Montserrat';
+    font-weight: 100;
+    font-size: 40px;
+    margin-top: 50px;
+
+}
+.dashboardButton{
+    font-family:'Montserrat';
+    font-size: 50px;
+    color: white;
+    background: #0abab5;
+    border-radius: 10px;
+    font-weight: 100;
+    width: 300px;
 }
