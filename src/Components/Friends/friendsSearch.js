@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './friends.css';
 import Slider from 'react-rangeslider';
-import 'react-rangeslider/lib/index.css'
+import 'react-rangeslider/lib/index.css';
+import axios from 'axios'
 
 
 
@@ -13,8 +14,24 @@ class FriendsSearch extends Component {
       value1: 1,
       value2: 1,
       name: '',
+      user_name: '',
+      id: '',
+      // friendName: [res.data],
     }
 
+    this.onChange = this.onChange.bind(this)
+  }
+
+
+  async componentDidMount(){
+    console.log("test front")
+    await axios.get('/getUserInfo/').then((response)=>{
+        console.log('did we get this?',response)
+        this.setState({
+            user_name: response.data[0].user_name,
+            id: response.data[0].id
+          })
+      })
   }
 
   handleChange1 = (value1) => {
@@ -28,17 +45,24 @@ class FriendsSearch extends Component {
     })
   }
 
-
-  // onPress(){
-
-  // }
-
-  nameInput(val) {
-    console.log(val);
+                          /*===== NAME SEARCH =====*/ 
+//GET REQUEST
+  onChange(val) {
+    console.log("Value:", val)
     this.setState({
-        name: val
+      name: val
     })
-}
+    axios.get(`/findUser/${this.state.name}`).then(res => {
+      console.log('Did it work?')
+      return res.data;
+    })
+  }
+
+  onSubmit(){
+    console.log(this.state.name)
+  }
+                        /*===== END NAME SEARCH =====*/
+
   render () {
     const { value1, value2 } = this.state
     return (
@@ -46,14 +70,13 @@ class FriendsSearch extends Component {
     
         <header className="main-nav">
           <div>Find Friends</div>
-          <div></div>
         </header>
           
 
         <div className="search">
-          <div>Search by:</div>
-          <input type="text" className= "input" />
-          <button className="friends-button search">Search</button>
+          <div className="search-by">Search by:</div>
+          <input type="text" className= "input" placeholder="Name" onChange={(e) => this.onChange(e.target.value)}/>
+          <button className="friends-button search" onClick={() => this.onSubmit()}>Search</button>
         </div>
 
         
@@ -83,6 +106,7 @@ class FriendsSearch extends Component {
 
           <div className="results">
             <div>Results</div>
+            <div>{this.state.friendName}</div>
           </div>
 
       </div>
