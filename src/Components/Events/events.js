@@ -3,10 +3,6 @@ import './events.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-
-
-
-
 class Events extends Component {
   constructor(){
     super();

@@ -13,12 +13,11 @@ class FriendsSearch extends Component {
     this.state = {
       value1: 1,
       value2: 1,
-      name: '',
+      name: [],
       user_name: '',
       id: '',
       // friendName: [res.data],
     }
-
     this.onChange = this.onChange.bind(this)
   }
 
@@ -47,20 +46,27 @@ class FriendsSearch extends Component {
 
                           /*===== NAME SEARCH =====*/ 
 //GET REQUEST
-  onChange(val) {
+ onChange(val){
     console.log("Value:", val)
-    this.setState({
-      name: val
+   axios.get(`/findUser/${val}`).then(res => {
+      console.log('DATA', res.data)
+     this.setState({
+        name: res.data.user_name
+      })
+      console.log(this.state.name)
     })
-    axios.get(`/findUser/${this.state.name}`).then(res => {
-      console.log('Did it work?')
-      return res.data;
-    })
+   
   }
+  
 
-  onSubmit(){
-    console.log(this.state.name)
+
+
+
+
+  onClick = (val) => {
+    return console.log('it worked', this.state.name)
   }
+  
                         /*===== END NAME SEARCH =====*/
 
   render () {
@@ -71,12 +77,12 @@ class FriendsSearch extends Component {
         <header className="main-nav">
           <div>Find Friends</div>
         </header>
-          
+        
 
         <div className="search">
           <div className="search-by">Search by:</div>
           <input type="text" className= "input" placeholder="Name" onChange={(e) => this.onChange(e.target.value)}/>
-          <button className="friends-button search" onClick={() => this.onSubmit()}>Search</button>
+          <button className="friends-button search" onClick = {() => this.onClick(this.state.name)}>Search</button>
         </div>
 
         
@@ -106,7 +112,7 @@ class FriendsSearch extends Component {
 
           <div className="results">
             <div>Results</div>
-            <div>{this.state.friendName}</div>
+            {this.state.name}
           </div>
 
       </div>
