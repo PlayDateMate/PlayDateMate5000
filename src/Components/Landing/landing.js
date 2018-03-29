@@ -14,7 +14,7 @@ export default class Landing extends Component {
           
                <div className='home_box'>
                    <div className = 'centerbox'>
-                   <div className = "title">Play Date Mate</div>
+                   <div className = "title">Playdate Mate</div>
                    <a id="login_button" className='login_button' href={ process.env.REACT_APP_LOGIN }>LOGIN</a>
                    </div>
     

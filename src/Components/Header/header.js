@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
 import './header.css';
-
+import {Link} from 'react-router-dom'
+import ProfileIcon from 'react-icons/lib/fa/user';
 
 
 
 class Header extends Component {
-  constructor(){
-    super();
-
-    this.state = {
-
-    }
-
-  }
+  
   
 
   render() {
     return (
       <div className="Header">
           <div className = "main">
-            <Link to = '/dashboard' className ="titleLink"><div className = "title">Playdate Mate</div></Link>
-            <a href = {process.env.REACT_APP_LOGOUT}>
-                <button className = 'logout'>logout</button>
-            </a>
+            {this.props.dashboard ?
+            <div className = "header-body">
+              <Link to = {`/profile/${this.props.dashboard}`}><ProfileIcon size ={30} color ={'white'}/></Link>
+              <div className = "header-title">Dashboard</div>     
+              {/* <a href = {process.env.REACT_APP_LOGOUT}> */}
+            <button className = 'logout'>logout</button>
+              {/* </a> */}</div>
+              :
+            <div className = "header-title">Playdate Mate</div>
+            }
+           
       </div>
-    );
-  }
-}
       </div>
     );
   }
