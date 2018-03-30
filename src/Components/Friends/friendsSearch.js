@@ -33,6 +33,11 @@ class FriendsSearch extends Component {
       })
   }
 
+  addFriend(val){
+    console.log("Friend ID:",val)
+    console.log("User ID:", (this.props.match.params.id * 1))
+  }
+
   handleChange1 = (value1) => {
     this.setState({
       value1: value1
@@ -51,18 +56,13 @@ class FriendsSearch extends Component {
    axios.get(`/findUser/${val}`).then(res => {
       console.log('DATA', res.data)
      this.setState({
-        name: res.data.user_name
+        name: res.data
       })
       console.log(this.state.name)
     })
    
   }
   
-
-
-
-
-
   onClick = (val) => {
     return console.log('it worked', this.state.name)
   }
@@ -71,6 +71,16 @@ class FriendsSearch extends Component {
 
   render () {
     const { value1, value2 } = this.state
+    const search = this.state.name.map((friend, i ) =>{
+      return(
+        <div>
+          {friend.user_name}
+          <button onClick={() => this.addFriend(friend.id)}>Add</button>
+        </div>
+
+
+      )
+    })
     return (
       <div className='friends'>
     
@@ -111,8 +121,8 @@ class FriendsSearch extends Component {
                           {/* END OF FILTER */}
 
           <div className="results">
-            <div>Results</div>
-            {this.state.name}
+            <div>Results:</div>
+            { search }
           </div>
 
       </div>
