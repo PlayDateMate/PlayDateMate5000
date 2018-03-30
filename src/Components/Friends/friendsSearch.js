@@ -78,8 +78,6 @@ class FriendsSearch extends Component {
           {friend.user_name}
           <button onClick={() => this.addFriend(friend.id)}>Add</button>
         </div>
-
-
       )
     })
     return (
