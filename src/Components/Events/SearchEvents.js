@@ -4,6 +4,7 @@ import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 import Modal from 'react-modal';
 import Header from '../Header/header.js';
+import axios from 'axios';
 
 
 

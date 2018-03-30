@@ -54,9 +54,14 @@ getUserEvents(user_id){
     const myevents = this.state.myEvents.map((event, i) => {
       return <div>
       <Link key={i} to={`/events/${event.id}`} 
+        
         className="pat-tile"><h4>{event.event_name}</h4></Link>
-        <p>Age group: <br/><div className="age_group"> {event.age_min} -- {event.age_max}</div></p>
-        <div className="date_group" ><h4>{event.start_date}</h4><h4>{event.end_date}</h4></div>
+        <div className="age_group"> Age group: {event.age_min} - {event.age_max}</div>
+
+        <div className="date_group" >
+          <div className="date_text"> Start Date: {event.start_date}</div>
+          <div className="date_text">End Date: {event.end_date}</div>
+        </div>
 
       </div>
     })
@@ -74,13 +79,24 @@ getUserEvents(user_id){
         </div> </div><br />
         <div> Upcoming Events <br/> <div className="upcoming_events">
 
-        </div> </div> <br />
-        <div> My Events <br/> <div className="own_events">
-          <div className="my_events">
+          <div className="own_events">
+            <div className="my_events">
               {myevents}
-          </div>
+              <button>View Event</button>
+            </div>
+          </div> 
 
         </div> </div> <br />
+
+        <div> 
+          <div>My Events </div> 
+          <div className="own_events">
+            <div className="my_events">
+              {myevents}
+              <button>View Event</button>
+            </div>
+          </div> 
+        </div>
 
       </div>
     );
