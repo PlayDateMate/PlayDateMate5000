@@ -30,17 +30,27 @@ module.exports = {
         })
     },
     acceptFriendRequest: (req, res) =>{
+        console.log('accepting friends')
         const db = req.app.get('db')
-        db.accept_friend_requests([])
+        db.accept_friend_requests([req.body.sender, req.user.id]).then(response=>{
+            console.log('successfully added friend')
+        })
     },
 
     getFriends: (req, res) => {
         const db = req.app.get('db')
         db.get_friend([req.user.id]).then(response => {
+            console.log('getting friends')
             res.status(200).send(response)
         }).catch(console.log('here are your friends'))
-    }
-
-    
+    },
+    denyFriends: (req, res) =>{
+        console.log('lets deny someone!')
+        const db = req.app.get('db')
+        db.deny_friend_request([req.body.sender, req.user.id]).then(response => {
+            res.status(200).send(console.log('DENIED'))
+            
+        }).catch(console.log('no dice'))
+    },
 
 }
