@@ -27,20 +27,26 @@
     width: 150px;
 }
 
-.my_events {
-    background-color: fuchsia;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
+.heart {
+    width: 200px;
+    height: 100px;
+    background: #7fee1d;
+    -moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
+}
+
+.age_group {
+    display: flex;
+    flex-direction: row;
+}
+.date_group {
+    display: flex;
+    flex-direction: row;
+}
+
+.pat-tile h4 {
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 50px;
-
-
 }
 /* end of events component */
 

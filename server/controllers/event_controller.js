@@ -30,4 +30,12 @@ module.exports = {
     .catch( () => res.status(500).send() );   
     },
 
+    searchEventsByName: (req, res) => {
+        const db = req.app.get('db')
+        db.events_search_results([`%${req.params.id}%`]).then(response => {
+            console.log(response)
+            res.status(200).send(response)
+        }).catch(console.log);
+    },
+
 }

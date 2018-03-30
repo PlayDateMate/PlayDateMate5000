@@ -19,13 +19,6 @@ class Events extends Component {
     console.log("test front")
     await axios.get('/getUserInfo/').then((response)=>{
         console.log('did we get this?',response)
-
-    // if (this.props.user){
-    //     this.getUserEvents(this.props.user.user_id)
-    //     console.log(this.state);
-    //     console.log(this.props.user);
-    // }
-
         this.setState({
             user_name: response.data[0].user_name,
             user_id: response.data[0].id
@@ -57,7 +50,13 @@ getUserEvents(user_id){
   render() {
 
     const myevents = this.state.myEvents.map((event, i) => {
-      return <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h1>{event.event_name} ></h1></Link>
+      return <div>
+      <Link key={i} to={`/events/${event.id}`} 
+        className="pat-tile"><h4>{event.event_name}</h4></Link>
+        <p>Age group: <br/><div className="age_group"> {event.age_min} -- {event.age_max}</div></p>
+        <div className="date_group" ><h4>{event.start_date}</h4><h4>{event.end_date}</h4></div>
+
+      </div>
     })
 
     return (
@@ -74,8 +73,9 @@ getUserEvents(user_id){
         <h5> Upcoming Events <br/> <div className="upcoming_events">
 
         </div> </h5> <br />
+
         <h5> My Events <br/> <div className="own_events">
-          <div className="my_events">
+          <div className="heart">
               {myevents}
           </div>
 

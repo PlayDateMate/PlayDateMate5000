@@ -115,6 +115,7 @@ app.get('/getonechild/:id', children_controller.getOneChild)
 //******************* Events Endpoints *****************************
 app.post('/api/events', event_controller.createEvent);
 app.get('/api/user/:user_id/myevents', event_controller.getUserEvents)
+app.get('/findUser/:id', event_controller.searchEventsByName)
 
 
 
