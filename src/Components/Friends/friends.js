@@ -5,9 +5,6 @@ import './friendsSearch'
 import axios from 'axios'
 import Header from '../Header/header.js'
 
-
-
-
 class Friends extends Component {
   constructor(){
     super();
@@ -32,12 +29,9 @@ class Friends extends Component {
     return (
       <div className="Friends">
         <Header Friends = {this.state.id}/>
-
         <section className="info-section">
 
-                    {/* ROUTES TO FRIEND SEARCH */}
           <Link to={`/friendsearch/${this.state.id}`}><button className="friends-button">Find Friends</button></Link>
-
 
           <div className="friend-requests">
             <div>Friend Requests</div>
@@ -50,10 +44,6 @@ class Friends extends Component {
 
         </section>
 
-
-
-
-      
       </div>
     );
   }
