@@ -82,7 +82,10 @@ getUserEvents(user_id){
           <div className="own_events">
             <div className="my_events">
               {myevents}
-              <button>View Event</button>
+              <div>
+                <button>View Event</button>
+                <button>Delete Event</button>
+                </div>
             </div>
           </div> 
 
