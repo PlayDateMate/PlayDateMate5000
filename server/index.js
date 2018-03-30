@@ -128,6 +128,9 @@ app.get('/findUser/:id', friends_controller.findFriends)
 app.post('/addfriend', friends_controller.addNewFriend )
 app.get('/getsent', friends_controller.getSenderRequest)
 app.get('/getfriends', friends_controller.getFriends)
+app.get('/receivedRequests', friends_controller.getReceiverRequest)
+app.put('/acceptfriend', friends_controller.acceptFriendRequest)
+app.put('/denyfriend', friends_controller.denyFriends)
 
 
 
