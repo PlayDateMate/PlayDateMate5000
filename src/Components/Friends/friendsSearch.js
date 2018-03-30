@@ -17,26 +17,32 @@ class FriendsSearch extends Component {
       name: [],
       user_name: '',
       id: '',
+    
       // friendName: [res.data],
     }
     this.onChange = this.onChange.bind(this)
+    this.addFriend = this.addFriend.bind(this)
   }
 
 
   async componentDidMount(){
     console.log("test front")
     await axios.get('/getUserInfo/').then((response)=>{
-        console.log('did we get this?',response)
+        console.log('did we our friends??',response)
         this.setState({
             user_name: response.data[0].user_name,
             id: response.data[0].id
           })
+          
       })
   }
 
   addFriend(val){
     console.log("Friend ID:",val)
     console.log("User ID:", (this.props.match.params.id * 1))
+    axios.post('/addfriend', {user_id: this.state.id, friend_id: val}).then(response=>{
+      console.log(response.data)
+    })
   }
 
   handleChange1 = (value1) => {
