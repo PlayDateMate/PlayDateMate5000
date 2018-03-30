@@ -3,6 +3,7 @@ import './friends.css';
 import { Link } from 'react-router-dom'
 import './friendsSearch'
 import axios from 'axios'
+import Header from '../Header/header.js'
 
 
 
@@ -30,15 +31,12 @@ class Friends extends Component {
   render() {
     return (
       <div className="Friends">
-        <header className="main-nav">
-          <div>Friends</div>
-          <div></div>
-        </header>
+        <Header Friends = {this.state.id}/>
 
         <section className="info-section">
 
                     {/* ROUTES TO FRIEND SEARCH */}
-          <Link to={`/friendsearch/${this.state. id}`}><button className="friends-button">Find Friends</button></Link>
+          <Link to={`/friendsearch/${this.state.id}`}><button className="friends-button">Find Friends</button></Link>
 
 
           <div className="friend-requests">

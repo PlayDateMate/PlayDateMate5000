@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './landing.css';
 import bubbles from './bubbles.jpg'
 
+
 export default class Landing extends Component {
         
 
