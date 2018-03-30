@@ -25,24 +25,11 @@ class Dashboard extends Component {
         console.log('did we get this?',response)
         this.setState({
             name: response.data[0].user_name,
-            id: response.data[0].id
+            id: response.data[0].id,
+            lat: response.data[0].latitude,
+            lng: response.data[0].longitude
         })
     })
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        let lat = position.coords.latitude
-        let lng = position.coords.longitude
-        console.log("getCurrentPosition Success " + lat + lng) // logs position correctly
-        this.setState({
-        lat:lat,
-        lng:lng
-        })
-      },
-      (error) => {
-        console.log(error)
-      },
-      {enableHighAccuracy: true, timeout: 50000, maximumAge: 1000}
-    )
   
 }
 

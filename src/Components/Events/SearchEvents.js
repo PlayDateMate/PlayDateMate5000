@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './events.css';
+import './SearchEvents.css';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 import Modal from 'react-modal';
-import axios from 'axios'
+import Header from '../Header/header.js';
 
 
 
@@ -76,10 +76,7 @@ onClick = (val) => {
     return (
       <div className='events'>
     
-        <header className="main-nav">
-          <div>Search Events</div>
-          <div></div>
-        </header>
+      <Header searchEventsId ={this.props.match.params.id} searchEvents ={'props'}/>
           
         <h4>Search by:</h4>
         <div className="search">

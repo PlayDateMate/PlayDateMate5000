@@ -3,6 +3,8 @@ import './profile.css';
 import {Link } from 'react-router-dom';
 import axios from 'axios'
 import Children from '../Children/children'
+import Header from '../Header/header.js'
+import ChildIcon from 'react-icons/lib/fa/child'
 
 
 
@@ -40,6 +42,7 @@ getChildren(){
     this.setState({
       children: response.data
     })
+    console.log("child data",response.data)
   })
 }
 
@@ -61,39 +64,41 @@ onSave(){
     
     let children = this.state.children.map((child, i)=>{
       return(
-        <div key={i}>
+        <div key={i} className = "children">
+          {child.gender ==='Male' ?
+            <ChildIcon color = {'#7ec0ee'} size = {60}/>:<ChildIcon color ={'#FF69B4'} size = {60}/>
+          }
           <span>{child.child_name}</span>
 
           <span>{child.age}</span>
           <Link to={`/children/${child.id}`} >
-          <button>Update</button>
+          <button className = 'updateButton'>Update</button>
           </Link>
         </div>
       )
     })
     return (
       <div className='profileMain'>
-        <header className='profileHeader'>
-          <Link to="/dashboard">
-            <button>Home</button>
-          </Link>
-            Profile Header
-        </header>
+        <Header profile ={this.state.userId}/>
         <div className="profileBody">
-          <img src={this.state.profilePicture}/>
-          <h3> Welcome, {this.state.name} </h3>
+          <img className = "profilePicture" src={this.state.profilePicture}/>
+          <div className = "profileName"><div>{this.state.name}</div></div>
         </div>
-        <div>{this.state.children ?
-          <div>
+        <div className = "profileChildren">
+          <div className = "profileChildrenTitle">Children</div>
+        {this.state.children ?
+          <div className = "displayChildren">
          {children}
+        
          </div>
+         
          :
          <div></div>
         }
         </div>
         <div>
           <Link to={`/addchild/${this.props.match.params.id}`}>
-          <button>Add Child +</button>
+          <button className = "addChildButton">Add Child +</button>
           </Link>
         </div>
       </div>

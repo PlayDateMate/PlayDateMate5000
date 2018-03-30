@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './events.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Header from '../Header/header.js';
+import SearchEvents from './SearchEvents.js'
 
 class Events extends Component {
   constructor(){
@@ -48,7 +50,7 @@ getUserEvents(user_id){
   
 
   render() {
-
+    
     const myevents = this.state.myEvents.map((event, i) => {
       return <div>
       <Link key={i} to={`/events/${event.id}`} 
@@ -61,25 +63,24 @@ getUserEvents(user_id){
 
     return (
       <div className="Events">
-
+        <Header events = {this.state.user_id}/>
         <div className = "event_btns">
-          <Link to={`/createEvent/${this.state.user_id}`}><button className="create_event_btn" onClick={ () => this.onSubmit() }>Create Event</button></Link>
-          <Link to={`/searchevents/${this.state.user_id}`}><button className="search_events_btn" onClick={ () => this.onSubmit() }>Search Events</button></Link>
+          <Link to={`/createEvent/${this.state.user_id}`}><button className="events_buttons" onClick={ () => this.onSubmit() }>Create Event</button></Link>
+          <Link to={`/searchevents/${this.state.user_id}`}><button className="events_buttons" onClick={ () => this.onSubmit() }>Search Events</button></Link>
         </div> <br />
 
-        <h5> Invitations <br/> <div className="invitations">
+        <div> Invitations <br/> <div className="invitations">
           
-        </div> </h5><br />
-        <h5> Upcoming Events <br/> <div className="upcoming_events">
+        </div> </div><br />
+        <div> Upcoming Events <br/> <div className="upcoming_events">
 
-        </div> </h5> <br />
-
-        <h5> My Events <br/> <div className="own_events">
-          <div className="heart">
+        </div> </div> <br />
+        <div> My Events <br/> <div className="own_events">
+          <div className="my_events">
               {myevents}
           </div>
 
-        </div> </h5> <br />
+        </div> </div> <br />
 
       </div>
     );

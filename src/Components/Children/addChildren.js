@@ -80,7 +80,7 @@ class AddChildren extends Component {
                 Date of Birth: <input type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
             </div>
             <div>
-                Gender: <select onClick={(e)=>{this.childGender(e.target.value)}}>
+                Gender: <select onChange={(e)=>{this.childGender(e.target.value)}}>
                             <option></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>

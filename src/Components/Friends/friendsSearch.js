@@ -3,6 +3,7 @@ import './friends.css';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
 import axios from 'axios'
+import Header from '../Header/header.js'
 
 
 
@@ -74,9 +75,7 @@ class FriendsSearch extends Component {
     return (
       <div className='friends'>
     
-        <header className="main-nav">
-          <div>Find Friends</div>
-        </header>
+      <Header SearchFriends = {this.state.id}/>
         
 
         <div className="search">
