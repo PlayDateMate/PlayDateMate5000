@@ -125,7 +125,9 @@ app.put('/api/location',location_controller.updateLocation)
 
 //******************** Friends Endpoints ****************************
 app.get('/findUser/:id', friends_controller.findFriends)
-
+app.post('/addfriend', friends_controller.addNewFriend )
+app.get('/getsent', friends_controller.getSenderRequest)
+app.get('/getfriends', friends_controller.getFriends)
 
 
 
