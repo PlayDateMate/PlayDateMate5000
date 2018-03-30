@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100');
+
 .profileMain{
     display: flex;
-    flex-direction: column;   
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;  
 }
 .profileHeader{
     border: 1px solid blue;
@@ -13,7 +17,68 @@
 }
 
 .profileBody{
+    margin-top:30px;
+    display: flex;
+    flex-direction:column ;
+    width: 40vw;  
+    justify-content: center;
+    align-items: center;
+}
+.profilePicture{
+    width: 200px;
+    height:200px;
+    border:1px solid rgb(255,255,0);
+    border-radius: 100px;
+    margin-bottom: 20px;
+    font-family:'Montserrat';
+    font-weight: 100;
+}
+.profileName{
+    font-size: 50px;
+    font-family:'Montserrat';
+    font-weight: 100;
+    flex-direction:row;
+    display: flex;
+    border-bottom: solid 1px #0abab5;
+    width: 300px;
+    margin-bottom:10px;
+}
+.profileChildrenTitle{
+    font-size: 30px;
+    font-family:'Montserrat';
+    font-weight: 100;
+}
+.children{
+    font-family: 'Montserrat';
     display: flex;
     flex-direction: column;
-    width: 40vw;  
+    align-items: center;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.displayChildren{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.updateButton{
+        font-size: 15px;
+        border: 1px solid #0abab5;
+        background: white;
+        color: #0abab5;
+        border-radius: 10px;
+        
+}
+.addChildButton{
+    font-family: 'Montserrat';
+    font-size: 30px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+    font-weight: 100;
 }

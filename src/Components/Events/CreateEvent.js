@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './events.css';
+import './CreateEvent.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Header from '../Header/header.js';
 
 
 export default class CreateEvent extends Component{
@@ -138,35 +139,37 @@ export default class CreateEvent extends Component{
     render() {
 
         return(
-            <div className="main_container">
-                <header>Create Event </header> <br />
+            <div className="Create_Event">
+                <div className = "body">
+                <Header CreateEvent = {this.state.user_id}/> 
                 <div onSubmit={this.onSubmit}>
-                
-                    <div className="name_input"><input placeholder="Event Name" onChange={(e) => this.nameInput(e.target.value)} type="text" /></div> <br />
-                    <div className="desc_input" ><textarea placeholder="Event Description" onChange={(e) => this.descriptionInput(e.target.value)} type="text" /> </div> <br />
-                    
+
+                <div className = "description">
+                    <label>Event Name<input className = "name_input" placeholder="Event Name" onChange={(e) => this.nameInput(e.target.value)} type="text" /></label>
+                   <label> Event Description<input className = "desc_input"placeholder="Event Description" onChange={(e) => this.descriptionInput(e.target.value)} type="text" /> </label>
+                </div>   
                        
                     <div className="dates">
-                        <div className="start_date" ><input placeholder="Start Date" type="date" onChange={(e) => this.startdateInput(e.target.value)} /> </div>
-                        <div className="end_date" ><input placeholder="End Date" type="date" onChange={(e) => this.enddateInput(e.target.value)} /> </div>
-                    </div><br />
+                        <label>Start Date<input className="date" placeholder="Start Date" type="date" onChange={(e) => this.startdateInput(e.target.value)} /></label>
+                        <label>End Date<input className = "date"placeholder="End Date" type="date" onChange={(e) => this.enddateInput(e.target.value)} /></label>
+                    </div>
                     <div className="ages">
-                        <div className="min_age" ><input placeholder="Minimum age" onChange={(e) => this.minageInput(e.target.value)} type="text" /> </div>
-                        <div className="max_age" ><input placeholder="Maximum age" onChange={(e) => this.maxageInput(e.target.value)} type="text" /> </div>
-                    </div><br />
-
-                    <div className="address" ><input placeholder="address" onChange={(e) => this.addressInput(e.target.value)} type="text" /></div> <br/> 
-                    
+                        <label>Min Age<input className="age" placeholder="0-12" onChange={(e) => this.minageInput(e.target.value)} type="text" /> </label>
+                        <label>Max Age<input className="age" placeholder="0-12" onChange={(e) => this.maxageInput(e.target.value)} type="text" /> </label>
+                    </div>
+                    <div className = "address_location">
+                        <label>Address or Location<input className="address" placeholder="address" onChange={(e) => this.addressInput(e.target.value)} type="text" /></label>  
+                    </div>
                     
                     <div className="city_zipcode">
-                    <div className="city" > <input placeholder="City" onChange={(e) => this.cityInput(e.target.value)} type="text" /> </div>
-                    <div className="zipcode" > <input placeholder="Zipcode" onChange={(e) => this.zipcodeInput(e.target.value)} type="text" /> </div>
-                    </div><br />
+                    <label>City<input className="zip_city" placeholder="Zipcode" onChange={(e) => this.cityInput(e.target.value)} type="text" /></label>
+                    <label>Zipcode<input className="zip_city" placeholder="City" onChange={(e) => this.zipcodeInput(e.target.value)} type="text" /></label>
+                    </div>
                    
-                    <Link to={`/events/${this.state.user_id}`}> <button className="create_event_btn" onClick={() =>this.onSubmit() }> Create Event </button></Link>
-                    <Link to={`/events/${this.state.user_id}`}> <button className="cancel_event_btn" onClick={() =>this.onSubmit() }> Cancel </button></Link>
+                    <Link to={`/events/${this.state.user_id}`}> <button className="create_event_button" onClick={() =>this.onSubmit() }>Create Event</button></Link>
+                    <Link to={`/events/${this.state.user_id}`}> <button className="create_event_button" onClick={() =>this.onSubmit() }>Cancel </button></Link>
                 </div>
-
+             </div>
             </div>
           
         )

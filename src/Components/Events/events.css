@@ -1,30 +1,30 @@
 
-/* -----------Events Component----------- */
-
-
-.events {
+.Events {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Montserrat';
 }
 
 .event_btns {
+    display:flex;
     margin-top: 30px;
+    justify-content: space-between;
+    width: 80vw;
 }
 
-.create_event_btn {
-    background-color: #3b5998;
-    padding: 10px;
-    margin: 20px;
-    width: 150px;
-    margin-top: 50px
-}
 
-.search_events_btn {
-    background-color: #3b5998;
-    padding: 10px;
-    margin: 20px;
-    width: 150px;
+.events_buttons{
+    font-family: 'Montserrat';
+    font-size: 20px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+    font-weight: 100;
+    width: 160px;
 }
 
 .my_events {
@@ -40,161 +40,21 @@
     cursor: pointer;
     border-radius: 50px;
 
-
 }
-/* end of events component */
-
-
-
-
-/* -------styling creatEevent component starts here--------*/
-.cancel_event_btn {
-    background-color: #3b5998;
-    padding: 10px;
-    margin: 20px;
-    width: 150px;
-}
-
 .invitations {
     border: 1px solid grey;
-    margin: 0 50px;
-    height: 15vh;   
+    width: 80vw;
+    height: 20vh;  
 }
 
 .upcoming_events {
     border: 1px solid grey;
-    margin: 0 50px;
-    height: 15vh;
+    width: 80vw;
+    height: 20vh; 
 }
 
 .own_events {
     border: 1px solid grey;
-    margin: 0 50px;
-    height: 15vh;
-}
-
-
-
-/* ---Create event page--- */
-
-header {
-    background-color: #3b5998;
-    padding: 20px;
-    width: 100%;
-}
-
-.name_input input {
-    border: 1px solid grey;
-    margin: 0 50px;
-    height: 5vh;
-    width: 80vw; 
-}
-
-
-.desc_input textarea {
-    border: 1px solid grey;
-    margin: 0 50px;
-    height: 15vh;
-    width: 80vw; 
-}
-
-.dates {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.start_date input {
-    border: 1px solid grey;
-    margin: 10px;
-    width: 35vw;
-}
-
-.end_date input {
-    border: 1px solid grey;
-    margin: 10px;
-    width: 35vw;
-}
-
-.ages {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.min_age input {
-    border: 1px solid grey;
-    margin: 10px;
-    width: 35vw;
-}
-
-.max_age input {
-    border: 1px solid grey;
-    margin: 10px;
-    width: 35vw;
-}
-
-.address input {
-    border: 1px solid grey;
-    margin: 0 50px;
-    height: 5vh;
-    width: 80vw; 
-}
-
-.city_zipcode {
-    display: flex;
-    flex-direction: row;
-  
-    justify-content: center;
-}
-
-.city input {
-    border: 1px solid grey;
-    margin: 10px;
-    width: 35vw;
-}
-
-.zipcode input {
-    border: 1px solid grey;
-    margin: 10px;
-    width: 35vw;
-}
-
-
-/* --------Events Search -------- */
-
-.search_by_zipcode {
-    background-color: #3b5998;
-    padding: 10px;
-    margin: 15px;
-    width: 40vw;
-    margin-top: 5px
-}
-
-.search_by_name {
-    background-color: #3b5998;
-    padding: 10px;
-    margin: 15px;
-    width: 40vw;
-    margin-top: 5px
-}
-
-
-.results {
-    margin: 0 50px;
-    border: 1px solid gray;
-    height: 20vh;
-    width: 90vw;
-} 
-
-.search {
-    display: flex;
-    flex-direction: row;
-
-}
-
-.modal_input {
-    border: 1px solid gray;
-    width: 90vw;
-    height: 20vh;
+    width: 80vw;
+    height: 20vh; 
 }
