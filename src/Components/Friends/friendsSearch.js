@@ -17,21 +17,32 @@ class FriendsSearch extends Component {
       name: [],
       user_name: '',
       id: '',
+    
       // friendName: [res.data],
     }
     this.onChange = this.onChange.bind(this)
+    this.addFriend = this.addFriend.bind(this)
   }
 
 
   async componentDidMount(){
     console.log("test front")
     await axios.get('/getUserInfo/').then((response)=>{
-        console.log('did we get this?',response)
+        console.log('did we our friends??',response)
         this.setState({
             user_name: response.data[0].user_name,
             id: response.data[0].id
           })
+          
       })
+  }
+
+  addFriend(val){
+    console.log("Friend ID:",val)
+    console.log("User ID:", (this.props.match.params.id * 1))
+    axios.post('/addfriend', {user_id: this.state.id, friend_id: val}).then(response=>{
+      console.log(response.data)
+    })
   }
 
   handleChange1 = (value1) => {
@@ -52,18 +63,13 @@ class FriendsSearch extends Component {
    axios.get(`/findUser/${val}`).then(res => {
       console.log('DATA', res.data)
      this.setState({
-        name: res.data.user_name
+        name: res.data
       })
       console.log(this.state.name)
     })
    
   }
   
-
-
-
-
-
   onClick = (val) => {
     return console.log('it worked', this.state.name)
   }
@@ -72,6 +78,16 @@ class FriendsSearch extends Component {
 
   render () {
     const { value1, value2 } = this.state
+    const search = this.state.name.map((friend, i ) =>{
+      return(
+        <div>
+          {friend.user_name}
+          <button onClick={() => this.addFriend(friend.id)}>Add</button>
+        </div>
+
+
+      )
+    })
     return (
       <div className='friends'>
     
@@ -110,8 +126,8 @@ class FriendsSearch extends Component {
                           {/* END OF FILTER */}
 
           <div className="results">
-            <div>Results</div>
-            {this.state.name}
+            <div>Results:</div>
+            { search }
           </div>
 
       </div>
