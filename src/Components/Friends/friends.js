@@ -16,6 +16,8 @@ class Friends extends Component {
       requestsSent: [],
       getFriends: []
     }
+    this.acceptFriend = this.acceptFriend.bind(this);
+    this.denyFriend == this.denyFriend.bind(this);
   }
   async componentDidMount(){
     console.log("test front")
@@ -27,7 +29,7 @@ class Friends extends Component {
         })
     })
     axios.get('/getsent').then((response)=>{
-      console.log(response)
+      console.log('get sent',response)
       this.setState({
           requestsSent: response.data
 
@@ -35,11 +37,40 @@ class Friends extends Component {
     })
 
     axios.get('/getFriends').then((response) => {
-      console.log(response)
+      console.log('get friends', response)
       this.setState({
         getFriends: response.data
       })
     })
+    axios.get('/receivedRequests').then((response)=>{
+      console.log('get received', response)
+      this.setState({
+        requestsReceived: response.data
+      })
+    })
+}
+
+acceptFriend(id){
+  axios.put('/acceptfriend',{sender:id}).then(()=>{
+    alert('You have accepted this friend')
+    axios.get('/getFriends').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getFriends: response.data
+      })
+    })
+  })
+}
+denyFriend(id){
+  axios.put('/denyfriend',{sender:id}).then(()=>{
+    alert('You have accepted this friend')
+    axios.get('/getFriends').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getFriends: response.data
+      })
+    })
+  })
 }
 
   render() {
@@ -61,6 +92,15 @@ class Friends extends Component {
           </div>
         )
       })
+      const received = this.state.requestsReceived.map((request, i)=>{
+        return(
+          <div>
+            {request.user_name}
+            <button onClick={()=>this.acceptFriend(request.id)}>Accept</button>
+            <button onClick={()=>this.denyFriend(request.id)}>Deny</button>
+          </div>
+        )
+      })
 
     return (
       <div className="Friends">
@@ -72,13 +112,15 @@ class Friends extends Component {
           <div className="friend-requests">
             <div>Friend Requests</div>
             {sentRequests}
+            {received}
           </div>
-
+          
           <div className="friend-filter">
             <div>Friends</div>
             <div>Filter</div>
             {friends}
           </div>
+          
 
         </section>
 
