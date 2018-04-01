@@ -109,6 +109,9 @@ app.get('/getUserInfo', (req, res)=>{
 app.get('/getchildren/:id', children_controller.getChild);
 app.post('/addchild', children_controller.addChild);
 app.get('/getonechild/:id', children_controller.getOneChild)
+app.get('/getuser', children_controller.getUser)
+app.get('/getchildage/:id', children_controller.getChildAge)
+app.put('/updatechild/:id', children_controller.updateChild)
 
 
 

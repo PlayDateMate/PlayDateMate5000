@@ -38,11 +38,10 @@ async componentWillMount(){
 getChildren(){
   console.log('is this firing?', this.props.match.params.id )
   axios.get(`/getchildren/${this.props.match.params.id}`).then(response=>{
-    console.log('did this work?...', response.data)
+    
     this.setState({
       children: response.data
     })
-    console.log("child data",response.data)
   })
 }
 
