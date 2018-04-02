@@ -1,106 +1,54 @@
-
-
-                /*===== USED IN FRIENDS.JS AND FRIENDSSEARCH.JS =====*/
-.main-nav {
-    width: 100vw;
-    height: 50px;
-    background-color: #3b5998;
-    text-align: center;
+.body{
+    display: flex;
+    justify-content: center;
 }
 
-.friends-button{
-    background-color: #3b5998;
-    border-radius: 4px 4px 4px 4px;
-    height: 50px;
-    width: 140px;
+
+.find-friends-button{
+    font-family: 'Montserrat';
+    font-size: 20px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+    font-weight: 100;
+    width: 160px;
     margin-top: 20px;
-    font-size: 15px
+    margin-bottom: 20px;
 }
-
-                                /*===== end =====*/
-
-
-
-
-                        /*===== ONLY USED IN FRIENDS =====*/
-
-.info-seciton{
-    align-items: center;
+.viewProfile{
+    font-family: 'Montserrat';
+    font-size: 15px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+    font-weight: 100;
+    width: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
-
-
-.friend-requests {
-    margin: 20px 0px 0px 16px;
-    border: 2px;
-    border-width: medium;
-    border-color: black;
-    border-style: solid;
-    height: 20vh;
-    width: 90vw;
-    overflow: scroll;
-    
+.list-friends{
+    border: 1px solid black;
+    margin: 5px;
+    display: flex;
+    flex-direction:column;
 }
-
-.friend-filter {
-    margin: 20px 0px 0px 16px;
-    border: 2px;
-    border-width: medium;
-    border-color: black;
-    border-style: solid;
-    height: 40vh;
-    width: 90vw;
-    overflow: scroll;
-    
-   
-   
-}
-
-                            /*===== end =====*/
-
-
-
-
-                /*=========== ONLY USED IN FRIENDS SEARCH ===========*/
-
-.input{
-    width: 180px;
-    height: 40px;
-    border:solid;
-    border-color: black;
+.list-friends-title{
+    font-family: 'Montserrat';
     font-size: 20px;
 }
-
-
-.search-buttons {
-    background-color: #3b5998;
-    border-radius: 4px 4px 4px 4px;
-    height: 50px;
-    width: 140px;
-    margin-top: 20px;
-    font-size: 15px
+.friend{
+    display: flex;
+    align-items: center;
+    width: 95vw;
+    padding: 2px;
+    font-family: 'Montserrat';
+    justify-content: space-between;
+    border-bottom: 1px solid black;
 }
-
-
-.results {
-    border: 2px;
-    border-width: medium;
-    border-color: black;
-    border-style: solid;
-    height: 40vh;
-    width: 90vw;
+.friendProfilePicture{
+    width:100px;
+    height: 100px;
+    border-radius: 200px;
 }
-
-.search{
-    margin: 0px 0px 0px 10px
-}
-
-.search-by {
-    margin: 20px 0px 15px 0px
-}
-
-                                /*===== end =====*/
-
-
-
-
