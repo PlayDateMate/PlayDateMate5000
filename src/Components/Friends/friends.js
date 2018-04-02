@@ -81,9 +81,9 @@ denyFriend(id){
   render() {
       const sentRequests = this.state.requestsSent.map((friend, i)=>{
         return(
-          <div key = {i}>
-            {friend.user_name}
-            <button>cancel</button>
+          <div key = {i} className = "sent">
+            <div className = "sentName">{friend.user_name}</div>
+            <button className = "cancel">cancel</button>
           </div>
         )
       })
@@ -99,10 +99,10 @@ denyFriend(id){
       })
       const received = this.state.requestsReceived.map((request, i)=>{
         return(
-          <div key ={i}>
+          <div key ={i} className = "received">
             {request.user_name}
-            <button onClick={()=>this.acceptFriend(request.id)}>Accept</button>
-            <button onClick={()=>this.denyFriend(request.id)}>Deny</button>
+            <a href="javascript:location.reload(true)"><button className = "received-buttons"onClick={()=>this.acceptFriend(request.id)}>Accept</button></a>
+            <a href="javascript:location.reload(true)"><button className = "received-buttons"onClick={()=>this.denyFriend(request.id)}>Deny</button></a>
           </div>
         )
       })
@@ -115,13 +115,16 @@ denyFriend(id){
           <Link to={`/friendsearch/${this.state.id}`}><button className="find-friends-button">Find Friends</button></Link>
         <div className = "requests">
           <div className = 'requestsTitle'>Requests</div>
+          <div className = "requestsBody">
             <div className="sent-friend-requests">
-              <div>Sent Requests</div>
+              <div className = "sentTitle">Sent</div>
                 {sentRequests}
               </div>
             <div className="recieved-friend-requests">
-               Recieved Requests
+               <div className = "receivedTitle">Recieved</div>
               {received}
+          </div>
+        </div>
           </div>
           
           <div className="list-friends">
@@ -129,7 +132,7 @@ denyFriend(id){
             {/* <div>Filter</div> */}
             {friends}
           </div>
-        </div> 
+        
 
         </section>
 
