@@ -13,6 +13,7 @@ const children_controller = require('./controllers/children_controller');
 const event_controller = require('./controllers/event_controller');
 const location_controller = require('./controllers/location_controller');
 const friends_controller = require('./controllers/friends_controller');
+const view_profile = require('./controllers/view_profile')
 
 const  {
     SERVER_PORT,
@@ -22,7 +23,6 @@ const  {
     CLIENT_SECRET, 
     CALLBACK_URL,
     CONNECTION_STRING
-
 } = process.env;
 
 const app = express();
@@ -120,6 +120,7 @@ app.post('/api/events', event_controller.createEvent);
 app.get('/api/user/:user_id/myevents', event_controller.getUserEvents)
 app.get('/api/user/:user_id/myeventsandupcoming', event_controller.getUserEventsAndUpcoming)
 app.get('/findUser/:id', event_controller.searchEventsByName)
+<<<<<<< HEAD
 app.post('/addevent', event_controller.addNewEvent )
 app.put('/accepteventinvite', event_controller.acceptEventInvite)
 // app.get('/getAttendingEvent', event_controller.getAttendingEvent)
@@ -127,6 +128,9 @@ app.get('/eventRequestSent', event_controller.getSenderEventInvite)
 app.get('/receivedEventRequest', event_controller.getReceiverEventInvite)
 app.put('/denyeventinvite', event_controller.denyEventInvite)
 app.delete('/api/event/:id', event_controller.cancelEvent)
+=======
+app.post('/addevent', event_controller.addNewEvent)
+>>>>>>> master
 
 
 
@@ -146,8 +150,11 @@ app.put('/denyfriend', friends_controller.denyFriends)
 
 //******************** Event Invite Endpoints ****************************
 app.post('/addFriendToEvent', event_controller.addFriendToEvent)
+app.get('/eventId', event_controller.eventId)
 
+//******************** View Profile Endpoints ****************************
 
+app.get('/viewprofile/:id', view_profile.viewProfile)
 
 
 
