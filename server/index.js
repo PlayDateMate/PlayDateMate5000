@@ -141,6 +141,9 @@ app.put('/denyfriend', friends_controller.denyFriends)
 app.post('/addFriendToEvent', event_controller.addFriendToEvent)
 
 
+//******************** View Profile Endpoints ****************************
+
+app.get('/viewprofile')
 
 
 
