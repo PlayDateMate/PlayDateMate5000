@@ -14,7 +14,6 @@ class Events extends Component {
       user_id: '',
       user_name: ''
     }
-
   }
 
   async componentDidMount(){
@@ -27,12 +26,12 @@ class Events extends Component {
     //     console.log(this.state);
     //     console.log(this.props.user);
     // }
-
         this.setState({
             user_name: response.data[0].user_name,
             user_id: response.data[0].id
         })
-    }, this.getUserEvents(this.props.match.params.id))
+    }, 
+    this.getUserEvents(this.props.match.params.id))
   }
 
   componentWillReceiveProps(nextProps) {

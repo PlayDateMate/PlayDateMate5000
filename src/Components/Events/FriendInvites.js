@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import './friendsSearch.css';
-import Slider from 'react-rangeslider';
-import 'react-rangeslider/lib/index.css';
 import axios from 'axios'
 import Header from '../Header/header.js'
 
 
 
-class FriendsSearch extends Component {
+class FriendInvites extends Component {
 
   constructor(props, context) {
     super(props, context)
@@ -21,8 +18,9 @@ class FriendsSearch extends Component {
       // friendName: [res.data],
     }
     this.onChange = this.onChange.bind(this)
-    this.addFriend = this.addFriend.bind(this)
+    this.addFriendToEvent = this.addFriendToEvent.bind(this)
   }
+
 
   async componentDidMount(){
     console.log("test front")
@@ -31,33 +29,31 @@ class FriendsSearch extends Component {
         this.setState({
             user_name: response.data[0].user_name,
             id: response.data[0].id
-          })
-          
+          })  
       })
+
+
+       /*===== GET CURRENT FRIENDS =====*/
+       axios.get('/getFriends').then((response) => {
+            console.log('get friends', response)
+            this.setState({
+            getFriends: response.data
+            })
+        })
+              /*===== END =====*/
   }
+
                   /*===== Add Friend Funciton =====*/
-  addFriend(val){
-    console.log("Friend ID:",val)
-    console.log("User ID:", (this.props.match.params.id * 1))
-    axios.post('/addfriend', {user_id: this.state.id, friend_id: val}).then(response=>{
-      console.log(response.data)
+    addFriendToEvent(val){
+        console.log("Friend ID:",val)
+        console.log("User ID:", (this.props.match.params.id * 1))
+        axios.post('/addfriend', {user_id: this.state.id, friend_id: val, event_id: this.props.match.params.id }).then(response=>{
+        console.log(response.data)
     })
   }
                           /*===== End =====*/
 
-                          
-  handleChange1 = (value1) => {
-    this.setState({
-      value1: value1
-    })
-  }
-
-  handleChange2 = (value2) => {
-    this.setState({
-      value2: value2
-    })
-  }
-
+ 
                           /*===== NAME SEARCH =====*/ 
 //GET REQUEST
  onChange(val){
@@ -79,14 +75,16 @@ class FriendsSearch extends Component {
 
   render () {
     const { value1, value2 } = this.state
+                    /*===== INVITE FFRIENDS =====*/
     const search = this.state.name.map((friend, i ) =>{
       return(
         <div>
           {friend.user_name}
-          <button onClick={() => this.addFriend(friend.id)}>Add</button>
+          <button onClick={() => this.addFriendToEvent(friend.id)}>Add</button>
         </div>
       )
     })
+                        /*===== END =====*/ 
     return (
       <div className='friends'>
     
@@ -96,43 +94,20 @@ class FriendsSearch extends Component {
         <div className="search">
           <div className="search-by">Search by:</div>
           <input type="text" className= "input" placeholder="Name" onChange={(e) => this.onChange(e.target.value)}/>
-          {/* <button className="friends-button search" onClick = {() => this.onClick(this.state.name)}>Search</button> */}
+          
         </div>
-
-        
-                          {/* FILTERS */}
-        {/* <div className='slider'>
-          <h2>Filter by children age</h2>
-          <Slider
-            min={2}
-            max={12}
-            step={1}
-            value={value1}
-            onChange={this.handleChange1}
-          />
-          <div className='value'>{value1}</div> */}
-{/* 
-          <h2>Filter by distance</h2>
-          <Slider
-            min={2}
-            max={12}
-            step={1}
-            value={value2}
-            onChange={this.handleChange2}
-          />
-          <div className='value'>{value2}</div>
-        </div> */}
-                          {/* END OF FILTER */}
 
           <div className="results">
             <div>Results:</div>
             { search }
           </div>
 
+
+
       </div>
     )
   }
 }
 
-export default FriendsSearch;
+export default FriendInvites;
 

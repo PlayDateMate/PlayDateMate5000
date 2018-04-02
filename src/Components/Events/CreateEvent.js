@@ -21,7 +21,8 @@ export default class CreateEvent extends Component{
             zipcode: '',
             privacy: '',
             user_id: '',
-            events: []   
+            events: [],
+            getFriends:[]
         }
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -65,7 +66,7 @@ export default class CreateEvent extends Component{
             privacy: this.state.privacy
             })
             .then((resp) => {
-            console.log(resp.data);
+            console.log('data base data',resp.data);
             // this.setState({events: resp.data})
             // this.props.history.push('/events')
                 return resp.data
@@ -134,10 +135,12 @@ export default class CreateEvent extends Component{
                 privacy: val
             })
         }
-    
+
+         
+
 
     render() {
-
+               
         return(
             <div className="Create_Event">
                 <div className = "body">
@@ -165,9 +168,12 @@ export default class CreateEvent extends Component{
                     <label>City<input className="zip_city" placeholder="Zipcode" onChange={(e) => this.cityInput(e.target.value)} type="text" /></label>
                     <label>Zipcode<input className="zip_city" placeholder="City" onChange={(e) => this.zipcodeInput(e.target.value)} type="text" /></label>
                     </div>
-                   
+
+                    
                     <Link to={`/events/${this.state.user_id}`}> <button className="create_event_button" onClick={() =>this.onSubmit() }>Create Event</button></Link>
                     <Link to={`/events/${this.state.user_id}`}> <button className="create_event_button" onClick={() =>this.onSubmit() }>Cancel </button></Link>
+
+                    
                 </div>
              </div>
             </div>

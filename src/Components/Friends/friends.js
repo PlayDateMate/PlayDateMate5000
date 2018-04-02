@@ -36,12 +36,15 @@ class Friends extends Component {
       })
     })
 
+            /*===== GET CURRENT FRIENDS =====*/
     axios.get('/getFriends').then((response) => {
       console.log('get friends', response)
       this.setState({
         getFriends: response.data
       })
     })
+                    /*===== END =====*/
+
     axios.get('/receivedRequests').then((response)=>{
       console.log('get received', response)
       this.setState({
@@ -49,6 +52,8 @@ class Friends extends Component {
       })
     })
 }
+
+
 
 acceptFriend(id){
   axios.put('/acceptfriend',{sender:id}).then(()=>{

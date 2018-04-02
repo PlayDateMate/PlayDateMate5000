@@ -11,7 +11,8 @@ import Profile from './Components/Profile/profile'
 import FriendSearch from './Components/Friends/friendsSearch'
 import SearchEvents from './Components/Events/SearchEvents';
 import AddChild from './Components/Children/addChildren';
-import UpdateChildren from './Components/Children/updateChildren'
+import UpdateChildren from './Components/Children/updateChildren';
+import FriendInvites from './Components/Events/FriendInvites';
 
 class App extends Component {
   render() {
@@ -31,7 +32,8 @@ class App extends Component {
             <Route path = '/createevent/:id' component = {CreateEvent} />    
             <Route path = '/searchevents/:id' component = {SearchEvents} />  
             <Route path = '/addchild/:id' component = {AddChild} />
-            <Route path = '/updatechild/:id' component = {AddChild} />    
+            <Route path = '/updatechild/:id' component = {AddChild} />
+            <Route path = '/friendinvites' component = {FriendInvites} />    
 
 
           </Switch>
