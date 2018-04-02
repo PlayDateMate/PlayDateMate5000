@@ -42,7 +42,7 @@ componentWillUnmount(){
       }
       
       axios.put('http://localhost:3005/api/location', location).then(response =>{
-        console.log(response.data)
+        console.log('location change data',response.data)
       }
   )
 
