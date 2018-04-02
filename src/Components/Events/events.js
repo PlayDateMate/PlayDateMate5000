@@ -11,8 +11,10 @@ class Events extends Component {
 
     this.state = {
       myEvents: [],
-      getAttendingEvent: [],
+      myEventsAndUpcoming: [],
+      eventRequestSent: [],
       eventRequestReceived: [], 
+      getAttendingEvent: [],
       user_id: '',
       user_name: ''
     }
@@ -34,20 +36,27 @@ class Events extends Component {
         })
     }, this.getUserEvents(this.props.match.params.id))
 
-    axios.get('/getAttendingEvent').then((response) => {
-      console.log('get friends', response)
+    axios.get('/eventRequestSent').then((response)=>{
+      console.log('get sent',response)
       this.setState({
-        getAttendingEvent: response.data
+          eventRequestSent: response.data
+
       })
     })
+
     axios.get('/receivedEventRequest').then((response)=>{
-      console.log('get received', response)
+      console.log('event invite received', response)
       this.setState({
         eventRequestReceived: response.data
       })
     })
-  
-    this.getUserEvents(this.props.match.params.id)
+
+    axios.get('/getAttendingEvent').then((response) => {
+      console.log('attending event', response)
+      this.setState({
+        getAttendingEvent: response.data
+      })
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,6 +72,20 @@ getUserEvents(user_id){
         console.log(res.data)
         this.setState({ myEvents: res.data })
     }).catch((err) => console.log("err", err));
+}
+
+getUserEventsAndUpcoming(user_id){
+  axios.get(`/api/user/${user_id}/myeventsandupcoming`).then((res) => {
+      console.log(res.data)
+      this.setState({ myEventsAndUpcoming: res.data })
+  }).catch((err) => console.log("err", err));
+}
+
+deleteEvent(){
+  console.log("Testtest", this.props.match.params.id);
+  axios.delete(`/api/event/${this.props.match.params.id}`).then(response => {
+  console.log("Something response")
+  }).catch(console.log)
 }
 
 acceptEventInvite(id){
@@ -92,22 +115,77 @@ onSubmit(event) {
   (this.state.value);
 }
   
-
   render() {
     
     const myevents = this.state.myEvents.map((event, i) => {
-      return <div>
-      <Link key={i} to={`/events/${event.id}`} 
-        
-        className="pat-tile"><h4>{event.event_name}</h4></Link>
-        <div className="age_group"> Age group: {event.age_min} - {event.age_max}</div>
+      return (
+      
+        <div>
+          <div className="event_info">
+            <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
+            <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+            <div className="event_text"> Start Date: {event.start_date}</div>
+            <div className="event_text">End Date: {event.end_date}</div>
+          </div>
+    
+          <div>
+            <button className="event_actions_btns">View Event</button>
+            <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
+            <button className="event_actions_btns">Invite Friends</button>
+          </div>
 
-        <div className="date_group" >
-          <div className="date_text"> Start Date: {event.start_date}</div>
-          <div className="date_text">End Date: {event.end_date}</div>
         </div>
+      )
+    })
 
-      </div>
+    const myeventplusupcoming = this.state.myEventsAndUpcoming.map((event, i) => {
+      return (
+      
+        <div>
+          <div className="event_info">
+            <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
+            <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+            <div className="event_text"> Start Date: {event.start_date}</div>
+            <div className="event_text">End Date: {event.end_date}</div>
+          </div>
+    
+          <div>
+            <button className="event_actions_btns">View Event</button>
+            <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
+            <button className="event_actions_btns">Invite Friends</button>
+          </div>
+
+        </div>
+      )
+    })
+
+    const sentRequests = this.state.eventRequestSent.map((event, i)=>{
+      return(
+        <div key = {i}>
+          {event.event_name}
+          <button>cancel</button>
+        </div>
+      )
+    })
+
+    const receivedRequests = this.state.eventRequestReceived.map((request, i)=>{
+      return(
+        <div key ={i}>
+          {request.event_name}
+          {request.user_name}
+          <button className="accept_deny_btn" onClick={()=>this.acceptEventInvite(request.event_id)}>Accept</button>
+          <button className="accept_deny_btn" onClick={()=>this.denyEventInvite(request.id)}>Deny</button>
+        </div>
+      )
+    })
+
+    const attendingEvent = this.state.getAttendingEvent.map((friend, i) => {
+      return (
+        <div key = {i} className = "friend">
+          {friend.user_name}
+          <button className = "viewProfile">View Profile</button>
+        </div>
+      )
     })
 
     return (
@@ -119,6 +197,7 @@ onSubmit(event) {
         </div> <br />
 
         <div> Invitations <br/> <div className="invitations">
+            {receivedRequests}
           
         </div> </div><br />
         <div> Upcoming Events <br/> <div className="upcoming_events">
@@ -126,11 +205,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-                <div>
-                <button>View Event</button>
-                <button>Delete Event</button>
-                <button>Invite Friends</button>
-                </div>
+              {myeventplusupcoming}
             </div>
           </div> 
 
@@ -141,9 +216,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-                <button className="my_events_btns">View Event</button>
-                <button className="my_events_btns">Delete Event</button>
-                <button className="my_events_btns">Invite Friends</button>
+              {myeventplusupcoming}
             </div>
           </div> 
         </div>
