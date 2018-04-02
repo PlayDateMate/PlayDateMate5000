@@ -17,7 +17,6 @@ class FriendsSearch extends Component {
       name: [],
       user_name: '',
       id: '',
-    
       // friendName: [res.data],
     }
     this.onChange = this.onChange.bind(this)
@@ -81,8 +80,9 @@ class FriendsSearch extends Component {
     const search = this.state.name.map((friend, i ) =>{
       return(
         <div>
-          {friend.user_name}
-          <button onClick={() => this.addFriend(friend.id)}>Add</button>
+          
+            {friend.user_name}
+          <button onClick={() => this.addFriend(friend.id)} >Add</button>
         </div>
       )
     })

@@ -15,6 +15,37 @@ module.exports ={
     idIsNumber: function(id){
         return typeof id === 'number'
     },
+
+    /*===== KEANUS END POINT TESTS =====*/
+
+    isFriend: function(friend){
+        return typeof friend === 'string'
+    },
+    friendId: function(friendId){
+        return typeof friendId === 'number'
+    },
+    latitude: function(latitude){
+        return typeof latitude === 'number'
+    },
+    eventDate: function(eventDate){
+        return typeof eventDate === 'number'
+    },
+    eventId: function(eventId){
+        return typeof eventId === 'number'
+    },
+
+
+
+
+
+
+
+    
+
+
+
+
+
     nameIsNotNull: function(name){
         return typeof name === 'string'
     }

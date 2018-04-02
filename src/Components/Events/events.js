@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../Header/header.js';
 import SearchEvents from './SearchEvents.js'
+// import FriendInvite from './FriendInvites'
 
 class Events extends Component {
   constructor(){
@@ -35,13 +36,13 @@ class Events extends Component {
     }, this.getUserEvents(this.props.match.params.id))
 
     axios.get('/getAttendingEvent').then((response) => {
-      console.log('get friends', response)
+      console.log('get friends', response.data)
       this.setState({
         getAttendingEvent: response.data
       })
     })
     axios.get('/receivedEventRequest').then((response)=>{
-      console.log('get received', response)
+      console.log('get received', response.data)
       this.setState({
         eventRequestReceived: response.data
       })
@@ -76,6 +77,7 @@ acceptEventInvite(id){
     })
   })
 }
+
 denyEventInvite(id){
   axios.put('/denyeventinvite',{sender:id}).then(()=>{
     alert('You will not be attending this event')
@@ -96,19 +98,27 @@ onSubmit(event) {
   render() {
     
     const myevents = this.state.myEvents.map((event, i) => {
-      return <div>
-      <Link key={i} to={`/events/${event.id}`} 
-        
-        className="pat-tile"><h4>{event.event_name}</h4></Link>
-        <div className="age_group"> Age group: {event.age_min} - {event.age_max}</div>
+      return (
+      <div>
+        <Link key={i} to={`/events/${event.id}`} className="pat-tile">
+          <h4>{event.event_name}</h4>
+        </Link>
+        <div className="age_group" id="minAge">Age group: {event.age_min} - {event.age_max}</div>
 
         <div className="date_group" >
-          <div className="date_text"> Start Date: {event.start_date}</div>
-          <div className="date_text">End Date: {event.end_date}</div>
+          <div className="date_text" id="startDate">Start Date: {event.start_date}</div>
+          <div className="date_text" id='endDate'>End Date: {event.end_date}</div>
         </div>
 
+        <div>
+          <Link to={`/friendinvites/${event.id}`}><button className="my_events_btns">Invite Friends</button></Link>
+          <button className="my_events_btns">View Event</button>
+          <button className="my_events_btns">Delete Event</button>
+        </div>
       </div>
+      )
     })
+
 
     return (
       <div className="Events">
@@ -129,7 +139,7 @@ onSubmit(event) {
                 <div>
                 <button>View Event</button>
                 <button>Delete Event</button>
-                <button>Invite Friends</button>
+                <button>Invite</button>
                 </div>
             </div>
           </div> 
@@ -141,9 +151,6 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-                <button className="my_events_btns">View Event</button>
-                <button className="my_events_btns">Delete Event</button>
-                <button className="my_events_btns">Invite Friends</button>
             </div>
           </div> 
         </div>

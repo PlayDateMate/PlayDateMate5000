@@ -81,5 +81,16 @@ module.exports = {
         }).catch(console.log('no friends for you'))
     },
 
+    eventId: (req, res) =>{
+        console.log('HIT!!!')
+        const db = req.app.get('db')
+        db.get_event([req.params.id]).then(response => {
+            res.send(200).send(response)
+        })
+
+    }
             /*===== END =====*/
+
+
+            
 }
