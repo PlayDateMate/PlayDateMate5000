@@ -3,8 +3,7 @@ import './events.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../Header/header.js';
-import SearchEvents from './SearchEvents.js'
-// import FriendInvite from './FriendInvites'
+import SearchEvents from './SearchEvents.js';
 
 class Events extends Component {
   constructor(){
@@ -35,15 +34,11 @@ class Events extends Component {
             user_name: response.data[0].user_name,
             user_id: response.data[0].id
         })
-    }, this.getUserEvents(this.props.match.params.id))
+    } , this.getUserEvents(this.props.match.params.id) 
+      , this.getUserEventsAndUpcoming(this.props.match.params.id))
 
-<<<<<<< HEAD
     axios.get('/eventRequestSent').then((response)=>{
-      console.log('get sent',response)
-=======
-    axios.get('/getAttendingEvent').then((response) => {
-      console.log('get friends', response.data)
->>>>>>> master
+      console.log('event request sent',response)
       this.setState({
           eventRequestSent: response.data
 
@@ -51,16 +46,11 @@ class Events extends Component {
     })
 
     axios.get('/receivedEventRequest').then((response)=>{
-<<<<<<< HEAD
       console.log('event invite received', response)
-=======
-      console.log('get received', response.data)
->>>>>>> master
       this.setState({
         eventRequestReceived: response.data
       })
     })
-<<<<<<< HEAD
 
     axios.get('/getAttendingEvent').then((response) => {
       console.log('attending event', response)
@@ -68,10 +58,6 @@ class Events extends Component {
         getAttendingEvent: response.data
       })
     })
-=======
-  
-    
->>>>>>> master
   }
 
   componentWillReceiveProps(nextProps) {
@@ -90,7 +76,7 @@ getUserEvents(user_id){
 }
 
 getUserEventsAndUpcoming(user_id){
-  axios.get(`/api/user/${user_id}/myeventsandupcoming`).then((res) => {
+  axios.get(`/api/user/${user_id}/myevents`).then((res) => {
       console.log(res.data)
       this.setState({ myEventsAndUpcoming: res.data })
   }).catch((err) => console.log("err", err));
@@ -114,7 +100,6 @@ acceptEventInvite(id){
     })
   })
 }
-
 denyEventInvite(id){
   axios.put('/denyeventinvite',{sender:id}).then(()=>{
     alert('You will not be attending this event')
@@ -135,7 +120,6 @@ onSubmit(event) {
     
     const myevents = this.state.myEvents.map((event, i) => {
       return (
-<<<<<<< HEAD
       
         <div>
           <div className="event_info">
@@ -151,22 +135,10 @@ onSubmit(event) {
             <button className="event_actions_btns">Invite Friends</button>
           </div>
 
-=======
-      <div>
-        <Link key={i} to={`/events/${event.id}`} className="pat-tile">
-          <h4>{event.event_name}</h4>
-        </Link>
-        <div className="age_group" id="minAge">Age group: {event.age_min} - {event.age_max}</div>
-
-        <div className="date_group" >
-          <div className="date_text" id="startDate">Start Date: {event.start_date}</div>
-          <div className="date_text" id='endDate'>End Date: {event.end_date}</div>
->>>>>>> master
         </div>
       )
     })
 
-<<<<<<< HEAD
     const myeventplusupcoming = this.state.myEventsAndUpcoming.map((event, i) => {
       return (
       
@@ -214,17 +186,8 @@ onSubmit(event) {
           {friend.user_name}
           <button className = "viewProfile">View Profile</button>
         </div>
-=======
-        <div>
-          <Link to={`/friendinvites/${event.id}`}><button className="my_events_btns">Invite Friends</button></Link>
-          <button className="my_events_btns">View Event</button>
-          <button className="my_events_btns">Delete Event</button>
-        </div>
-      </div>
->>>>>>> master
       )
     })
-
 
     return (
       <div className="Events">
@@ -243,15 +206,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-<<<<<<< HEAD
               {myeventplusupcoming}
-=======
-                <div>
-                <button>View Event</button>
-                <button>Delete Event</button>
-                <button>Invite</button>
-                </div>
->>>>>>> master
             </div>
           </div> 
 
@@ -262,10 +217,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-<<<<<<< HEAD
               {myeventplusupcoming}
-=======
->>>>>>> master
             </div>
           </div> 
         </div>

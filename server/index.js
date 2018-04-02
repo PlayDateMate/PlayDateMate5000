@@ -120,7 +120,6 @@ app.post('/api/events', event_controller.createEvent);
 app.get('/api/user/:user_id/myevents', event_controller.getUserEvents)
 app.get('/api/user/:user_id/myeventsandupcoming', event_controller.getUserEventsAndUpcoming)
 app.get('/findUser/:id', event_controller.searchEventsByName)
-<<<<<<< HEAD
 app.post('/addevent', event_controller.addNewEvent )
 app.put('/accepteventinvite', event_controller.acceptEventInvite)
 // app.get('/getAttendingEvent', event_controller.getAttendingEvent)
@@ -128,9 +127,7 @@ app.get('/eventRequestSent', event_controller.getSenderEventInvite)
 app.get('/receivedEventRequest', event_controller.getReceiverEventInvite)
 app.put('/denyeventinvite', event_controller.denyEventInvite)
 app.delete('/api/event/:id', event_controller.cancelEvent)
-=======
 app.post('/addevent', event_controller.addNewEvent)
->>>>>>> master
 
 
 
