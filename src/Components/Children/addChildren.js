@@ -74,7 +74,7 @@ class AddChildren extends Component {
                 <h1>Add a Child to your profile!</h1>
             </div>
             <div>
-                Name: <input onChange={(e)=>{this.childName(e.target.value)}}></input>
+                Name: <input id="nameInputBox" onChange={(e)=>{this.childName(e.target.value)}}></input>
             </div>
             <div>
                 Date of Birth: <input type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
@@ -87,13 +87,13 @@ class AddChildren extends Component {
                         </select>
             </div>
             <div>
-            Interests: <input onChange={(e)=>{this.childInterests(e.target.value)}}></input>
+            Interests: <input id='interestsInputBox' onChange={(e)=>{this.childInterests(e.target.value)}}></input>
             </div>
             
             <button onClick={this.submitNew}>Submit</button>
 
             <Link to={`/profile/${this.props.match.params.id}`}>
-                <button>Back</button>
+                <button id='cancelAddChild'>Back</button>
             </Link>
             
         </div>
