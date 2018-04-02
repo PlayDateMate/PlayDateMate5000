@@ -1,4 +1,5 @@
 module.exports ={
+
     isMale: function(gender){
         return gender === 'Male'
     },
@@ -31,7 +32,7 @@ module.exports ={
     },
     eventId: function(eventId){
         return typeof eventId === 'number'
-    }
+    },
 
 
 
@@ -41,6 +42,14 @@ module.exports ={
 
     
 
+
+
+
+
+    nameIsNotNull: function(name){
+        return typeof name === 'string'
+    }
+    
 }
 
 

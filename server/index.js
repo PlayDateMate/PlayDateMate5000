@@ -13,6 +13,7 @@ const children_controller = require('./controllers/children_controller');
 const event_controller = require('./controllers/event_controller');
 const location_controller = require('./controllers/location_controller');
 const friends_controller = require('./controllers/friends_controller');
+const view_profile = require('./controllers/view_profile')
 
 const  {
     SERVER_PORT,
@@ -140,6 +141,9 @@ app.put('/denyfriend', friends_controller.denyFriends)
 app.post('/addFriendToEvent', event_controller.addFriendToEvent)
 app.get('/eventId', event_controller.eventId)
 
+//******************** View Profile Endpoints ****************************
+
+app.get('/viewprofile/:id', view_profile.viewProfile)
 
 
 

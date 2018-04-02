@@ -6,7 +6,6 @@ describe('Friends Page', function(){
         cy.visit(testingUrl + '/#/events/7')
         cy.get('#startDate')
         .should('exist')
-        
     })
     //2
     it('check for buttons', function(){
@@ -18,7 +17,6 @@ describe('Friends Page', function(){
     it('check for buttons', function(){
         cy.visit(testingUrl + '/#/events/7')
         cy.get('#endDate')
-    
         .should('exist')
     })
     // //4

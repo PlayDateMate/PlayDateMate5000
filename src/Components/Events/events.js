@@ -47,6 +47,8 @@ class Events extends Component {
         eventRequestReceived: response.data
       })
     })
+  
+    
   }
 
   componentWillReceiveProps(nextProps) {
