@@ -30,6 +30,46 @@ module.exports = {
     .catch( () => res.status(500).send() );   
     },
 
+    searchEventsByName: (req, res) => {
+        const db = req.app.get('db')
+        db.events_search_results([`%${req.params.id}%`]).then(response => {
+            console.log(response)
+            res.status(200).send(response)
+        }).catch(console.log);
+    },
+
+    addNewEvent: (req, res) =>{
+        const db = req.app.get('db')
+        const {user_id, event_id} = req.body
+        db.add_new_friend([user_id, event_id]).then(response =>{
+            console.log('Gat Ya!')
+        }).catch(console.log(" :( "))
+    },
+
+    acceptEventInvite: (req, res) =>{
+        console.log('accept event invite')
+        const db = req.app.get('db')
+        db.accept_event_invite([req.body.sender, req.user.id]).then(response=>{
+            console.log('You have accepted to attend an event')
+        })
+    },
+
+    getAttendingEvent: (req, res) => {
+        const db = req.app.get('db')
+        db.get_attending_event([req.user.id]).then(response => {
+            console.log('getting friends')
+            res.status(200).send(response)
+        }).catch(console.log('here are your friends'))
+    },
+    denyEventInvite: (req, res) =>{
+        console.log('Unable to attend event')
+        const db = req.app.get('db')
+        db.deny_event_invite([req.body.sender, req.user.id]).then(response => {
+            res.status(200).send(console.log('DENIED'))
+            
+        }).catch(console.log('no dice'))
+    },
+
 
     /*===== ADD FRIEND TO EVENT =====*/
 

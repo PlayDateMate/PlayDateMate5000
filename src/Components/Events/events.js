@@ -10,7 +10,9 @@ class Events extends Component {
     super();
 
     this.state = {
-      myEvents: [], 
+      myEvents: [],
+      getAttendingEvent: [],
+      eventRequestReceived: [], 
       user_id: '',
       user_name: ''
     }
@@ -30,8 +32,22 @@ class Events extends Component {
             user_name: response.data[0].user_name,
             user_id: response.data[0].id
         })
-    }, 
-    this.getUserEvents(this.props.match.params.id))
+    }, this.getUserEvents(this.props.match.params.id))
+
+    axios.get('/getAttendingEvent').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getAttendingEvent: response.data
+      })
+    })
+    axios.get('/receivedEventRequest').then((response)=>{
+      console.log('get received', response)
+      this.setState({
+        eventRequestReceived: response.data
+      })
+    })
+  
+    this.getUserEvents(this.props.match.params.id)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,16 +65,49 @@ getUserEvents(user_id){
     }).catch((err) => console.log("err", err));
 }
 
+acceptEventInvite(id){
+  axios.put('/accepteventinvite',{sender:id}).then(()=>{
+    alert('You have accepted to attend this event')
+    axios.get('/getFriends').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getFriends: response.data
+      })
+    })
+  })
+}
+denyEventInvite(id){
+  axios.put('/denyeventinvite',{sender:id}).then(()=>{
+    alert('You will not be attending this event')
+    axios.get('/getFriends').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getFriends: response.data
+      })
+    })
+  })
+}
 
-  onSubmit(event) {
-    (this.state.value);
-  }
+onSubmit(event) {
+  (this.state.value);
+}
   
 
   render() {
     
     const myevents = this.state.myEvents.map((event, i) => {
-      return <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h1>{event.event_name} ></h1></Link>
+      return <div>
+      <Link key={i} to={`/events/${event.id}`} 
+        
+        className="pat-tile"><h4>{event.event_name}</h4></Link>
+        <div className="age_group"> Age group: {event.age_min} - {event.age_max}</div>
+
+        <div className="date_group" >
+          <div className="date_text"> Start Date: {event.start_date}</div>
+          <div className="date_text">End Date: {event.end_date}</div>
+        </div>
+
+      </div>
     })
 
     return (
@@ -74,13 +123,30 @@ getUserEvents(user_id){
         </div> </div><br />
         <div> Upcoming Events <br/> <div className="upcoming_events">
 
-        </div> </div> <br />
-        <div> My Events <br/> <div className="own_events">
-          <div className="my_events">
+          <div className="own_events">
+            <div className="my_events">
               {myevents}
-          </div>
+                <div>
+                <button>View Event</button>
+                <button>Delete Event</button>
+                <button>Invite Friends</button>
+                </div>
+            </div>
+          </div> 
 
         </div> </div> <br />
+
+        <div> 
+          <div>My Events </div> 
+          <div className="own_events">
+            <div className="my_events">
+              {myevents}
+                <button className="my_events_btns">View Event</button>
+                <button className="my_events_btns">Delete Event</button>
+                <button className="my_events_btns">Invite Friends</button>
+            </div>
+          </div> 
+        </div>
 
       </div>
     );
