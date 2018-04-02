@@ -77,6 +77,22 @@ class Header extends Component {
             <button className = 'logout'>logout</button>
               {/* </a> */}</div>
               :
+              this.props.child ?
+              <div className = "header-body">
+              <Link to = {`/profile/${this.props.child}`}><BackButton size ={30} color ={'white'}/></Link>
+              <div className = "header-title">Child</div>     
+              {/* <a href = {process.env.REACT_APP_LOGOUT}> */}
+            <button className = 'logout'>logout</button>
+              {/* </a> */}</div>
+              :
+              this.props.addChild ?
+              <div className = "header-body">
+              <Link to = {`/profile/${this.props.addChild}`}><BackButton size ={30} color ={'white'}/></Link>
+              <div className = "header-title">Add Child</div>     
+              {/* <a href = {process.env.REACT_APP_LOGOUT}> */}
+            <button className = 'logout'>logout</button>
+              {/* </a> */}</div>
+              :
 
             null
             }

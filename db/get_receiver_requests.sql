@@ -1,3 +1,4 @@
 select * from friend_requests
-join users on users.id = $1
-and reciever_status = 'pending';
+join users on users.id = sender
+and reciever_status = 'pending'
+where reciever = $1;

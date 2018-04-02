@@ -38,6 +38,8 @@
     border-style: solid;
     height: 20vh;
     width: 90vw;
+    overflow: scroll;
+    
 }
 
 .friend-filter {
@@ -48,6 +50,10 @@
     border-style: solid;
     height: 40vh;
     width: 90vw;
+    overflow: scroll;
+    
+   
+   
 }
 
                             /*===== end =====*/

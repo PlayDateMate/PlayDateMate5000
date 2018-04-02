@@ -137,3 +137,4 @@ class FriendsSearch extends Component {
 }
 
 export default FriendsSearch;
+

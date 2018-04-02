@@ -109,6 +109,9 @@ app.get('/getUserInfo', (req, res)=>{
 app.get('/getchildren/:id', children_controller.getChild);
 app.post('/addchild', children_controller.addChild);
 app.get('/getonechild/:id', children_controller.getOneChild)
+app.get('/getuser', children_controller.getUser)
+app.get('/getchildage/:id', children_controller.getChildAge)
+app.put('/updatechild/:id', children_controller.updateChild)
 
 
 
@@ -128,6 +131,9 @@ app.get('/findUser/:id', friends_controller.findFriends)
 app.post('/addfriend', friends_controller.addNewFriend )
 app.get('/getsent', friends_controller.getSenderRequest)
 app.get('/getfriends', friends_controller.getFriends)
+app.get('/receivedRequests', friends_controller.getReceiverRequest)
+app.put('/acceptfriend', friends_controller.acceptFriendRequest)
+app.put('/denyfriend', friends_controller.denyFriends)
 
 
 
