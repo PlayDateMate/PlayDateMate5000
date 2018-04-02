@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './friends.css';
+import './friendsSearch.css';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
 import axios from 'axios'
