@@ -131,7 +131,6 @@ class FriendsSearch extends Component {
       </div>
     )
   }
-
 }
 
 export default FriendsSearch;
