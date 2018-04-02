@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './children.css';
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+import Header from '../Header/header.js';
 
 
 
@@ -70,9 +71,7 @@ class AddChildren extends Component {
     render() {
         return (
         <div>
-            <div>
-                <h1>Add a Child to your profile!</h1>
-            </div>
+            <Header addChild={this.state.user_id}/>
             <div>
                 Name: <input id="nameInputBox" onChange={(e)=>{this.childName(e.target.value)}}></input>
             </div>
