@@ -17,6 +17,9 @@ module.exports ={
     },
     nameIsNotNull: function(name){
         return typeof name === 'string'
+    },
+    idIsNumber: function(number){
+        return typeof number ==='number'
     }
     
 }
