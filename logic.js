@@ -1,4 +1,5 @@
 module.exports ={
+
     isMale: function(gender){
         return gender === 'Male'
     },
@@ -13,15 +14,12 @@ module.exports ={
     },
     idIsNumber: function(id){
         return typeof id === 'number'
+    },
+    nameIsNotNull: function(name){
+        return typeof name === 'string'
     }
+    
 }
 
 
 
-module.exports ={
-        
-
-
-
-
-}
