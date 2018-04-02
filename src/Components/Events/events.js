@@ -10,7 +10,9 @@ class Events extends Component {
     super();
 
     this.state = {
-      myEvents: [], 
+      myEvents: [],
+      getAttendingEvent: [],
+      eventRequestReceived: [], 
       user_id: '',
       user_name: ''
     }
@@ -26,6 +28,19 @@ class Events extends Component {
             user_id: response.data[0].id
         })
     }, this.getUserEvents(this.props.match.params.id))
+
+    axios.get('/getAttendingEvent').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getAttendingEvent: response.data
+      })
+    })
+    axios.get('/receivedEventRequest').then((response)=>{
+      console.log('get received', response)
+      this.setState({
+        eventRequestReceived: response.data
+      })
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,10 +58,32 @@ getUserEvents(user_id){
     }).catch((err) => console.log("err", err));
 }
 
+acceptEventInvite(id){
+  axios.put('/accepteventinvite',{sender:id}).then(()=>{
+    alert('You have accepted to attend this event')
+    axios.get('/getFriends').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getFriends: response.data
+      })
+    })
+  })
+}
+denyEventInvite(id){
+  axios.put('/denyeventinvite',{sender:id}).then(()=>{
+    alert('You will not be attending this event')
+    axios.get('/getFriends').then((response) => {
+      console.log('get friends', response)
+      this.setState({
+        getFriends: response.data
+      })
+    })
+  })
+}
 
-  onSubmit(event) {
-    (this.state.value);
-  }
+onSubmit(event) {
+  (this.state.value);
+}
   
 
   render() {
@@ -82,9 +119,10 @@ getUserEvents(user_id){
           <div className="own_events">
             <div className="my_events">
               {myevents}
-              <div>
+                <div>
                 <button>View Event</button>
                 <button>Delete Event</button>
+                <button>Invite Friends</button>
                 </div>
             </div>
           </div> 
@@ -96,7 +134,9 @@ getUserEvents(user_id){
           <div className="own_events">
             <div className="my_events">
               {myevents}
-              <button>View Event</button>
+                <button className="my_events_btns">View Event</button>
+                <button className="my_events_btns">Delete Event</button>
+                <button className="my_events_btns">Invite Friends</button>
             </div>
           </div> 
         </div>

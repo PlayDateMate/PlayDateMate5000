@@ -46,13 +46,25 @@
 .upcoming_events {
     border: 1px solid grey;
     width: 80vw;
-    height: 20vh; 
+    height: 20vh;
+    overflow: scroll; 
 }
 
 .own_events {
     border: 1px solid grey;
     width: 80vw;
     height: 20vh; 
+    overflow: scroll; 
+}
+
+.my_events {
+    display: flex;
+    flex-direction: column;
+    height: 0vh;
+}
+
+.my_events_btns {
+   
 }
 
 .date_text {
