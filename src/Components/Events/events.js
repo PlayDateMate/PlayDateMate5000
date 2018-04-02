@@ -16,13 +16,18 @@ class Events extends Component {
       user_id: '',
       user_name: ''
     }
-
   }
 
   async componentDidMount(){
     console.log("test front")
     await axios.get('/getUserInfo/').then((response)=>{
         console.log('did we get this?',response)
+
+    // if (this.props.user){
+    //     this.getUserEvents(this.props.user.user_id)
+    //     console.log(this.state);
+    //     console.log(this.props.user);
+    // }
         this.setState({
             user_name: response.data[0].user_name,
             user_id: response.data[0].id
@@ -41,6 +46,8 @@ class Events extends Component {
         eventRequestReceived: response.data
       })
     })
+  
+    this.getUserEvents(this.props.match.params.id)
   }
 
   componentWillReceiveProps(nextProps) {

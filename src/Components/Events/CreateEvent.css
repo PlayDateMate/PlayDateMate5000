@@ -91,3 +91,15 @@
     font-weight: 100;
     width: 160px;
 }
+
+
+.friend-invitey {
+    margin: 20px 0px 0px 16px;
+    border: 2px;
+    border-width: medium;
+    border-color: black;
+    border-style: solid;
+    height: 40vh;
+    width: 90vw;
+    overflow: scroll; 
+}
