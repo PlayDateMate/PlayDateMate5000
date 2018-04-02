@@ -18,8 +18,6 @@ describe('check Male', ()=>{
         expect(logic.isMale(10))
             .toEqual(false)
     })
-    
-
 })
 
 

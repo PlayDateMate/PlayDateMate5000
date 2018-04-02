@@ -30,4 +30,16 @@ module.exports = {
     .catch( () => res.status(500).send() );   
     },
 
+
+    /*===== ADD FRIEND TO EVENT =====*/
+
+    addFriendToEvent: (req, res) =>{
+        const db = req.app.get('db')
+        const {user_id, friend_id, event_id} = req.body
+        db.invite_to_event([user_id, friend_id, event_id]).then(response =>{
+            console.log('YAY! You might get a new friend!')
+        }).catch(console.log('no friends for you'))
+    },
+
+            /*===== END =====*/
 }

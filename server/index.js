@@ -135,6 +135,12 @@ app.get('/receivedRequests', friends_controller.getReceiverRequest)
 app.put('/acceptfriend', friends_controller.acceptFriendRequest)
 app.put('/denyfriend', friends_controller.denyFriends)
 
+//******************** Event Invite Endpoints ****************************
+app.post('/addFriendToEvent', event_controller.addFriendToEvent)
+
+
+
+
 
 
 // app.get('*', (req, res)=>{
