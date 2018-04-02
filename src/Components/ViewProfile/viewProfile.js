@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './profile.css';
+// import './profile.css';
 import {Link } from 'react-router-dom';
 import axios from 'axios'
 import Children from '../Children/children'
@@ -18,21 +18,28 @@ class ViewProfile extends Component {
         profilePicture: '',
         canEdit: false, 
         userId: '',
-        children: []
+        children: [],
+        original_id: ''
     }
-    this.onEdit = this.onEdit.bind(this);
-    this.onSave = this.onSave.bind(this);
+    
     this.getChildren = this.getChildren.bind(this);
 }
 async componentWillMount(){
-    await axios.get('/viewprofile').then((response)=>{
-      console.log("herro",response)
+    console.log('did paige get us the right id without breaking things?', this.props.id)
+    await axios.get(`/viewprofile/${this.props.match.params.id}`).then((response)=>{
+      console.log("herro",response, this.props.id)
         this.setState({
             name: response.data[0].user_name,
             profilePicture: response.data[0].image,
             userId: response.data[0].id
         })
     }, this.getChildren())
+    axios.get('/getUserInfo/').then((response)=>{
+        console.log('did we get this?',response)
+        this.setState({
+            original_id: response.data[0].id
+        })
+    })
 }
 
 getChildren(){
@@ -55,15 +62,15 @@ getChildren(){
             <span>{child.child_name}</span>
 
             <span>{child.age.years ? `${child.age.years} years old` : `${child.age.months} months old`}</span>
-            <Link to={`/children/${child.id}`} >
-                <button className = 'updateButton'>Update</button>
-            </Link>
+           
         </div>
         )
     })
     return (
         <div className='profileMain'>
-            <Header profile ={this.state.userId}/>
+            <Header viewProfile ={this.state.name}
+                    id={this.state.original_id}
+            />
             <div className="profileBody">
                 <img className = "profilePicture" src={this.state.profilePicture}/>
                 <div className = "profileName"><div>{this.state.name}</div></div>

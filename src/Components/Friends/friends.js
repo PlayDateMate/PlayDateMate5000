@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './friendsSearch'
 import axios from 'axios'
 import Header from '../Header/header.js'
+import viewProfile from '../ViewProfile/viewProfile';
 
 class Friends extends Component {
   constructor(){
@@ -79,6 +80,8 @@ denyFriend(id){
 }
 
   render() {
+
+    <viewProfile id={this.state.id}/>
       const sentRequests = this.state.requestsSent.map((friend, i)=>{
         return(
           <div key = {i} className = "sent">
@@ -94,7 +97,7 @@ denyFriend(id){
             <img className = "friendProfilePicture" src={friend.image}/>
             {friend.user_name}
             <Link to={`/viewprofile/${friend.id}`}>
-            <button className = "viewProfile">View Profile</button> //friend.id
+            <button className = "viewProfile">View Profile</button>
             </Link>
           </div>
         )
