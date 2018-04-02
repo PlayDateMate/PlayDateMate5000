@@ -38,4 +38,12 @@ module.exports = {
         }).catch(console.log);
     },
 
+    addNewEvent: (req, res) =>{
+        const db = req.app.get('db')
+        const {user_id, event_id} = req.body
+        db.add_new_friend([user_id, event_id]).then(response =>{
+            console.log('Gat Ya!')
+        }).catch(console.log(" :( "))
+    },
+
 }

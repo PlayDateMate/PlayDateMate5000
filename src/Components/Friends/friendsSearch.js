@@ -32,8 +32,7 @@ class FriendsSearch extends Component {
         this.setState({
             user_name: response.data[0].user_name,
             id: response.data[0].id
-          })
-          
+          })   
       })
   }
 

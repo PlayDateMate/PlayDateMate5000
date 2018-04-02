@@ -33,6 +33,14 @@ class SearchEvents extends Component {
       })
   }
 
+  addEvent(val) {
+    console.log("Event ID:" , val);
+    console.log("User ID:" , (this.props.match.params.id * 1))
+    axios.post('/addfriend', {user_id: this.state.id, event_id: val}).then(response => {
+      console.log(response.data)
+    })
+  }
+
   handleChange1 = (value1) => {
     this.setState({
       value1: value1
@@ -73,6 +81,14 @@ onClick = (val) => {
   render () {
 
     const { value1, value2, showModal } = this.state
+    const search = this.state.name.map((event, i) => {
+      return (
+        <div>
+          {event.user_name}
+          <button onClick={() => this.addEvent(event.id)}>Add</button>
+        </div>
+      )
+    })
 
     return (
       <div className='events'>
