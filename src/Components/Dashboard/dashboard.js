@@ -55,7 +55,7 @@ componentWillUnmount(){
         <div className="dashboardBody">
           <div className = "welcome-message"> Welcome, {this.state.name}.</div>
           <Link to={`/friends/${this.state.id}`}>
-            <button className = "dashboardButton">Friends</button>
+            <button className = "dashboardButton" id = "friends">Friends</button>
           </Link>
           <Link to={`/events/${this.state.id}`}>
             <button className = "dashboardButton">Events</button>
