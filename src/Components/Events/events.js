@@ -47,7 +47,7 @@ class Events extends Component {
       })
     })
   
-    this.getUserEvents(this.props.match.params.id)
+    
   }
 
   componentWillReceiveProps(nextProps) {
