@@ -153,7 +153,7 @@ export default class CreateEvent extends Component{
                 </div>   
                        
                     <div className="dates">
-                        {<label>Start Date<input type="date" onChange={(e) => this.startdateInput(e.target.value)} /></label>}
+                        <label>Start Date<input type="date" onChange={(e) => this.startdateInput(e.target.value)} /></label>
                         <label>End Date<input className = "date"placeholder="End Date" type="date" onChange={(e) => this.enddateInput(e.target.value)} /></label>
                     </div>
                     <div className="ages">
@@ -165,8 +165,8 @@ export default class CreateEvent extends Component{
                     </div>
                     
                     <div className="city_zipcode">
-                    <label>City<input className="zip_city" placeholder="Zipcode" onChange={(e) => this.cityInput(e.target.value)} type="text" /></label>
-                    <label>Zipcode<input className="zip_city" placeholder="City" onChange={(e) => this.zipcodeInput(e.target.value)} type="text" /></label>
+                    <label>City<input className="zip_city" placeholder="City" onChange={(e) => this.cityInput(e.target.value)} type="text" /></label>
+                    <label>Zipcode<input className="zip_city" placeholder="Zipcode" onChange={(e) => this.zipcodeInput(e.target.value)} type="text" /></label>
                     </div>
 
                     

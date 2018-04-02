@@ -27,20 +27,16 @@
     width: 160px;
 }
 
-.my_events {
-    background-color: fuchsia;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 50px;
-
+.heart {
+    width: 200px;
+    height: 100px;
+    background: #7fee1d;
+    -moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
 }
+
+
 .invitations {
     border: 1px solid grey;
     width: 80vw;
@@ -50,11 +46,27 @@
 .upcoming_events {
     border: 1px solid grey;
     width: 80vw;
-    height: 20vh; 
+    height: 20vh;
+    overflow: scroll; 
 }
 
 .own_events {
     border: 1px solid grey;
     width: 80vw;
     height: 20vh; 
+    overflow: scroll; 
+}
+
+.my_events {
+    display: flex;
+    flex-direction: column;
+    height: 0vh;
+}
+
+.my_events_btns {
+   
+}
+
+.date_text {
+    font-size: 10px;
 }
