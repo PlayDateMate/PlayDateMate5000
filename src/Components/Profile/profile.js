@@ -69,7 +69,7 @@ onSave(){
           }
           <span>{child.child_name}</span>
 
-          <span>{child.age.years ? `${child.age.years} years old` : `${child.age.months} months old`}</span>
+          <span id='childAge'>{child.age.years ? `${child.age.years} years old` : `${child.age.months} months old`}</span>
           <Link to={`/children/${child.id}`} >
           <button className = 'updateButton'>Update</button>
           </Link>

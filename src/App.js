@@ -33,7 +33,7 @@ class App extends Component {
             <Route path = '/searchevents/:id' component = {SearchEvents} />  
             <Route path = '/addchild/:id' component = {AddChild} />
             <Route path = '/updatechild/:id' component = {AddChild} />
-            <Route path = '/friendinvites' component = {FriendInvites} />    
+            <Route path = '/friendinvites/:id' component = {FriendInvites} />    
 
 
           </Switch>

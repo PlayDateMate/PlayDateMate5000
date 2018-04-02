@@ -112,7 +112,7 @@ denyFriend(id){
         <Header Friends = {this.state.id}/>
         <section className='body'>
 
-          <Link to={`/friendsearch/${this.state.id}`}><button className="find-friends-button">Find Friends</button></Link>
+          <Link to={`/friendsearch/${this.state.id}`} id="id"><button className="find-friends-button">Find Friends</button></Link>
         <div className = "requests">
           <div className = 'requestsTitle'>Requests</div>
             <div className="sent-friend-requests">

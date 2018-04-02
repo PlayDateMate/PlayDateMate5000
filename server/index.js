@@ -22,7 +22,6 @@ const  {
     CLIENT_SECRET, 
     CALLBACK_URL,
     CONNECTION_STRING
-
 } = process.env;
 
 const app = express();
@@ -119,7 +118,7 @@ app.put('/updatechild/:id', children_controller.updateChild)
 app.post('/api/events', event_controller.createEvent);
 app.get('/api/user/:user_id/myevents', event_controller.getUserEvents)
 app.get('/findUser/:id', event_controller.searchEventsByName)
-app.post('/addevent', event_controller.addNewEvent )
+app.post('/addevent', event_controller.addNewEvent)
 
 
 
@@ -139,7 +138,7 @@ app.put('/denyfriend', friends_controller.denyFriends)
 
 //******************** Event Invite Endpoints ****************************
 app.post('/addFriendToEvent', event_controller.addFriendToEvent)
-
+app.get('/eventId', event_controller.eventId)
 
 
 

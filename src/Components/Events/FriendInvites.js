@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Header from '../Header/header.js'
 
-
-
 class FriendInvites extends Component {
 
   constructor(props, context) {
     super(props, context)
     this.state = {
-      value1: 1,
-      value2: 1,
       name: [],
       user_name: '',
       id: '',
-    
-      // friendName: [res.data],
     }
     this.onChange = this.onChange.bind(this)
     this.addFriendToEvent = this.addFriendToEvent.bind(this)
@@ -39,7 +33,7 @@ class FriendInvites extends Component {
             this.setState({
             getFriends: response.data
             })
-        })
+        }).catch(console.log('BROKEN!!!'))
               /*===== END =====*/
   }
 
@@ -47,9 +41,17 @@ class FriendInvites extends Component {
     addFriendToEvent(val){
         console.log("Friend ID:",val)
         console.log("User ID:", (this.props.match.params.id * 1))
-        axios.post('/addfriend', {user_id: this.state.id, friend_id: val, event_id: this.props.match.params.id }).then(response=>{
+        axios.post('/addFriendToEvent', {user_id: this.state.id, friend_id: val, event_id: this.props.match.params.id }).then(response=>{
         console.log(response.data)
     })
+
+
+
+
+    // axios.get(`/eventId/${this.props.match.params.id}`).then((response) =>{
+    //   console.log('ID', this.props.match.params.id)
+    //   console.log('YAY', response.data)
+    // })
   }
                           /*===== End =====*/
 
@@ -80,7 +82,7 @@ class FriendInvites extends Component {
       return(
         <div>
           {friend.user_name}
-          <button onClick={() => this.addFriendToEvent(friend.id)}>Add</button>
+          <button onClick={() => this.addFriendToEvent(friend.id)} >Invite</button>
         </div>
       )
     })
