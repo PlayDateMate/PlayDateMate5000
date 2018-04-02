@@ -93,11 +93,11 @@ denyFriend(id){
 
       const friends = this.state.getFriends.map((friend, i) => {
         return (
-          <div key = {i} className = "friend">
+          <div key = {i} className = "friend" id ='listfriend'>
             <img className = "friendProfilePicture" src={friend.image}/>
             {friend.user_name}
             <Link to={`/viewprofile/${friend.id}`}>
-            <button className = "viewProfile">View Profile</button>
+            <button className = "viewProfile">View Profile</button> 
             </Link>
           </div>
         )

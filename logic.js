@@ -48,6 +48,25 @@ module.exports ={
 
     nameIsNotNull: function(name){
         return typeof name === 'string'
+    },
+    idIsNumber: function(number){
+        return typeof number ==='number'
+    },
+    friendIsAccepted: function(friendStatus){
+        return friendStatus ==='accepted'
+    },
+    friendRequestIsPending: function(requestStatus){
+        return requestStatus === 'pending'
+    },
+    receivedRequestsExists: function(array){
+        if(array.length<1){
+            return false
+        }else{
+            return true
+        }
+    },
+    longitudeisnumber: function(lng){
+        return typeof lng === 'number'
     }
     
 }
