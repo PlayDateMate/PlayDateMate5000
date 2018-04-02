@@ -96,12 +96,12 @@ class FriendsSearch extends Component {
         <div className="search">
           <div className="search-by">Search by:</div>
           <input type="text" className= "input" placeholder="Name" onChange={(e) => this.onChange(e.target.value)}/>
-          <button className="friends-button search" onClick = {() => this.onClick(this.state.name)}>Search</button>
+          {/* <button className="friends-button search" onClick = {() => this.onClick(this.state.name)}>Search</button> */}
         </div>
 
         
                           {/* FILTERS */}
-        <div className='slider'>
+        {/* <div className='slider'>
           <h2>Filter by children age</h2>
           <Slider
             min={2}
@@ -110,8 +110,8 @@ class FriendsSearch extends Component {
             value={value1}
             onChange={this.handleChange1}
           />
-          <div className='value'>{value1}</div>
-
+          <div className='value'>{value1}</div> */}
+{/* 
           <h2>Filter by distance</h2>
           <Slider
             min={2}
@@ -121,7 +121,7 @@ class FriendsSearch extends Component {
             onChange={this.handleChange2}
           />
           <div className='value'>{value2}</div>
-        </div>
+        </div> */}
                           {/* END OF FILTER */}
 
           <div className="results">

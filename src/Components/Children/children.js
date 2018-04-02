@@ -127,15 +127,15 @@ reset(){
         <div>
           { !this.state.edit ?
           <div>
-            <div>
+            <div id='childName'>
             {this.state.childName}
             </div>
 
-            <div>
+            <div id='childGender'>
             {this.state.childGender}
             </div>
 
-            <div>
+            <div id='childInterests'>
             {this.state.childInterests}
             </div>
 
@@ -143,7 +143,7 @@ reset(){
             {this.state.childAge}
             </div>
             <div>
-              <button onClick={()=>this.editable()}>Update</button>
+              <button id='updateChildButton' onClick={()=>this.editable()}>Update</button>
             </div>
           </div>
           
@@ -153,7 +153,7 @@ reset(){
                 <h1>Update</h1>
             </div>
             <div>
-                Name: <input value={this.state.childName} onChange={(e)=>{this.childName(e.target.value)}}></input>
+                Name: <input id='updateNameInput' value={this.state.childName} onChange={(e)=>{this.childName(e.target.value)}}></input>
             </div>
             <div>
                 Date of Birth: <input type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
@@ -166,11 +166,11 @@ reset(){
                         </select>
             </div>
             <div>
-            Interests: <input value={this.state.childInterests} onChange={(e)=>{this.childInterests(e.target.value)}}></input>
+            Interests: <input id='updateInterestsInput' value={this.state.childInterests} onChange={(e)=>{this.childInterests(e.target.value)}}></input>
             </div>
             
             <button onClick={this.updateChild}>Submit</button>
-            <button onClick={this.reset}>Cancel</button>
+            <button id='cancelUpdateButton' onClick={this.reset}>Cancel</button>
 
            
             </div>
