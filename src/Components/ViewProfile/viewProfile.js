@@ -8,7 +8,7 @@ import ChildIcon from 'react-icons/lib/fa/child'
 
 
 
-class profile extends Component {
+class ViewProfile extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -86,4 +86,4 @@ getChildren(){
   }
 }
 
-export default profile;
+export default ViewProfile;

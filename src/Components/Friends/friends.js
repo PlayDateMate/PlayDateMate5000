@@ -93,7 +93,9 @@ denyFriend(id){
           <div key = {i} className = "friend">
             <img className = "friendProfilePicture" src={friend.image}/>
             {friend.user_name}
+            <Link to={`/viewprofile/${friend.id}`}>
             <button className = "viewProfile">View Profile</button> //friend.id
+            </Link>
           </div>
         )
       })
