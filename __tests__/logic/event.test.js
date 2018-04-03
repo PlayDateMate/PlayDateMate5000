@@ -1,129 +1,92 @@
 const logic = require('../../logic')
 
-describe('check Male', ()=>{
+describe('check event', ()=>{
 
-    it('gender is male', ()=>{
-        expect(logic.isMale('Male'))
+    it('event is string', ()=>{
+        expect(logic.isEvent('string'))
             .toEqual(true)
     })
-    it('gender is lowercase', ()=>{
-        expect(logic.isMale('male'))
+
+    it('event is string', ()=>{
+        expect(logic.isFriend(3))
             .toEqual(false)
     })
-    it('gender is blank', ()=>{
-        expect(logic.isMale(''))
-            .toEqual(false)
-    })
-    it('gender is number', ()=>{
-        expect(logic.isMale(10))
-            .toEqual(false)
-    })
-})
 
-
-
-describe('check Female', ()=>{
-
-    it('gender is female', ()=>{
-        expect(logic.isFemale('Female'))
+    it('event is string', ()=>{
+        expect(logic.isFriend(''))
             .toEqual(true)
     })
-    it('gender is lowercase', ()=>{
-        expect(logic.isFemale('female'))
-            .toEqual(false)
-    })
-    it('gender is blank', ()=>{
-        expect(logic.isFemale(''))
-            .toEqual(false)
-    })
-    it('gender is number', ()=>{
-        expect(logic.isFemale(10))
-            .toEqual(false)
-    })
-    
 
 })
 
 
+//
+describe('check event', ()=>{
 
-describe('age is a number', ()=>{
-    it('object key/value = number',()=>{
-    
-        let obj = {age: 5};
-        expect(logic.childHasAge(obj.age))
+    it('event is string', ()=>{
+        expect(logic.friendId(4))
             .toEqual(true)
     })
-    it('object has key',()=>{
-    
-        let obj = {birthday: 5};
-        expect(logic.childHasAge(obj.age))
+    it('event is string', ()=>{
+        expect(logic.friendId('4'))
             .toEqual(false)
     })
-    it('object key/value = string',()=>{
-    
-        let obj = {age: '5'};
-        expect(logic.childHasAge(obj.age))
+    it('event is string', ()=>{
+        expect(logic.friendId(true))
             .toEqual(false)
+    })
+
+})
+
+//
+describe('check event', ()=>{
+
+    it('event is string', ()=>{
+        expect(logic.latitude(300))
+            .toEqual(true)
+    })
+    it('event is string', ()=>{
+        expect(logic.latitude([]))
+            .toEqual(false)
+    })
+    it('event is string', ()=>{
+        expect(logic.latitude(12))
+            .toEqual(true)
     })
     
 })
 
+//
+describe('check event', ()=>{
 
-
-describe('name is a string', ()=>{
-    it('object key/value = string',()=>{
-    
-        let obj = {name: 'Tyler'};
-        expect(logic.childNameText(obj.name))
+    it('event is string', ()=>{
+        expect(logic.eventDate(14))
             .toEqual(true)
     })
-    it('object is number',()=>{
-    
-        let obj = {name: 5};
-        expect(logic.childNameText(obj.name))
+    it('event is string', ()=>{
+        expect(logic.eventDate(null))
             .toEqual(false)
     })
-    it('object has wrong key',()=>{
-    
-        let obj = {birthday: 5};
-        expect(logic.childNameText(obj.age))
-            .toEqual(false)
-    })
-    it('object is undefined',()=>{
-    
-        let obj = {age: null};
-        expect(logic.childNameText(obj.age))
+    it('event is string', ()=>{
+        expect(logic.eventDate(undefined))
             .toEqual(false)
     })
 })
 
+//
+describe('check event', ()=>{
 
-
-
-describe('id is a number', ()=>{
-    it('object key/value = number',()=>{
-    
-        let obj = {id: 5};
-        expect(logic.idIsNumber(obj.id))
+    it('event id is a number', ()=>{
+        expect(logic.eventId(null))
+            .toEqual(false)
+    })
+    it('event id is a number', ()=>{
+        expect(logic.eventId(''))
+            .toEqual(false)
+    })
+    it('event id is a number', ()=>{
+        expect(logic.eventId(12))
             .toEqual(true)
-    })
-    it('object is !number',()=>{
-    
-        let obj = {id: '5'};
-        expect(logic.idIsNumber(obj.id))
-            .toEqual(false)
-    })
-    it('object has wrong key',()=>{
-    
-        let obj = {birthday: 5};
-        expect(logic.idIsNumber(obj.id))
-            .toEqual(false)
-    })
-    it('object is undefined',()=>{
-    
-        let obj = {id: null};
-        expect(logic.idIsNumber(obj.id))
-            .toEqual(false)
-    })
+    }) 
 })
 

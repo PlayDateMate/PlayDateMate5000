@@ -11,7 +11,7 @@ class Events extends Component {
 
     this.state = {
       myEvents: [],
-      myEventsAndUpcoming: [],
+      upcomingEvents: [],
       eventRequestSent: [],
       eventRequestReceived: [], 
       getAttendingEvent: [],
@@ -35,7 +35,7 @@ class Events extends Component {
             user_id: response.data[0].id
         })
     } , this.getUserEvents(this.props.match.params.id) 
-      , this.getUserEventsAndUpcoming(this.props.match.params.id))
+      , this.getUpcomingEvents(this.props.match.params.id))
 
     axios.get('/eventRequestSent').then((response)=>{
       console.log('event request sent',response)
@@ -64,22 +64,23 @@ class Events extends Component {
     if(!this.props.user && nextProps.user){
         // let patientID= this.props.match.params.id; // how to get the id param in the url
         this.getUserEvents(nextProps.user.user_id)
+        this.getUpcomingEvents(nextProps.user.user_id)
         console.log(nextProps.user);
     }
 }
 
 getUserEvents(user_id){
-    axios.get(`/api/user/${user_id}/myevents`).then((res) => {
-        console.log(res.data)
-        this.setState({ myEvents: res.data })
-    }).catch((err) => console.log("err", err));
-}
-
-getUserEventsAndUpcoming(user_id){
   axios.get(`/api/user/${user_id}/myevents`).then((res) => {
       console.log(res.data)
-      this.setState({ myEventsAndUpcoming: res.data })
+      this.setState({ myEvents: res.data })
   }).catch((err) => console.log("err", err));
+}
+
+getUpcomingEvents(user_id){
+    axios.get(`/api/user/${user_id}/upcomingevents`).then((res) => {
+        console.log(res.data)
+        this.setState({ upcomingEvents: res.data })
+    }).catch((err) => console.log("err", err));
 }
 
 deleteEvent(){
@@ -139,7 +140,7 @@ onSubmit(event) {
       )
     })
 
-    const myeventplusupcoming = this.state.myEventsAndUpcoming.map((event, i) => {
+    const upcomingevents = this.state.upcomingEvents.map((event, i) => {
       return (
       
         <div>
@@ -206,7 +207,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-              {myeventplusupcoming}
+              {upcomingevents}
             </div>
           </div> 
 
@@ -217,7 +218,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-              {myeventplusupcoming}
+              {upcomingevents}
             </div>
           </div> 
         </div>

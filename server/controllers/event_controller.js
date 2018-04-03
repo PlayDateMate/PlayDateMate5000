@@ -14,15 +14,15 @@ module.exports = {
         }).catch(console.log);
     },
 
-    getUserEvents: (req, res) => {
+    myEvents: (req, res) => {
         req.app.get('db').get_user_events(req.params.user_id).then((response) =>{
             console.log(response);
             res.status(200).send(response)
         }).catch(console.log);
     },
 
-    getUserEventsAndUpcoming: (req, res) => {
-        req.app.get('db').user_events_and_upcoming(req.params.user_id).then((response) =>{
+    upComingEvents: (req, res) => {
+        req.app.get('db').get_upcoming_events(req.params.user_id).then((response) =>{
             console.log(response);
             res.status(200).send(response)
         }).catch(console.log);
@@ -31,10 +31,20 @@ module.exports = {
     cancelEvent: (req, res, next) => {
         const dbInstance = req.app.get('db');
         const { params } = req;   
-    dbInstance.delete_event([params.id])
-    .then( () => res.status(200).send() )   
-    .catch( () => res.status(500).send() );   
+    dbInstance.delete_event([params.id]).then( (response) => {
+        console.log('response');
+        res.status(200).send(response) 
+        }).catch( () => res.status(500).send() );   
     },
+
+    // delete: (req, res) => {
+    //     for (let i  = 0; i < contacts.length; i++) {
+    //         if (events[i].id === parseInt(req.params.id)) {
+    //             events.splice(i, 1);
+    //         }
+    //     }
+    //     res.status(200).send('Contact deleted :(');  
+    // }
 
     searchEventsByName: (req, res) => {
         const db = req.app.get('db')

@@ -117,8 +117,8 @@ app.put('/updatechild/:id', children_controller.updateChild)
 
 //******************* Events Endpoints *****************************
 app.post('/api/events', event_controller.createEvent);
-app.get('/api/user/:user_id/myevents', event_controller.getUserEvents)
-app.get('/api/user/:user_id/myeventsandupcoming', event_controller.getUserEventsAndUpcoming)
+app.get('/api/user/:user_id/myevents', event_controller.myEvents)
+app.get('/api/user/:user_id/upcomingevents', event_controller.upComingEvents)
 app.get('/findUser/:id', event_controller.searchEventsByName)
 app.post('/addevent', event_controller.addNewEvent )
 app.put('/accepteventinvite', event_controller.acceptEventInvite)
