@@ -14,6 +14,7 @@ import AddChild from './Components/Children/addChildren';
 import UpdateChildren from './Components/Children/updateChildren';
 import FriendInvites from './Components/Events/FriendInvites';
 import ViewProfile from './Components/ViewProfile/viewProfile';
+import Chat from './Components/Chat/chat'
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
             <Route path = '/updatechild/:id' component = {AddChild} />
             <Route path = '/friendinvites/:id' component = {FriendInvites} />   
             <Route path = '/viewprofile/:id' component = {ViewProfile} />
+            <Route path = '/chat/:id' component = {Chat} />
             
 
 
