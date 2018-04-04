@@ -33,20 +33,20 @@ class Dashboard extends Component {
   
 }
 
-componentWillUnmount(){
+// componentWillUnmount(){
   
-      let location = {
-          userId: this.state.id,
-          latitude: this.state.lat,
-          longitude: this.state.lng
-      }
+//       let location = {
+//           userId: this.state.id,
+//           latitude: this.state.lat,
+//           longitude: this.state.lng
+//       }
       
-      axios.put('http://localhost:3005/api/location', location).then(response =>{
-        console.log('location change data',response.data)
-      }
-  )
+//       axios.put('http://localhost:3005/api/location', location).then(response =>{
+//         console.log('location change data',response.data)
+//       }
+//   )
 
-}
+// }
   render() {
     console.log(this.state)
     return (
