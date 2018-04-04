@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './children.css';
 import Header from '../Header/header.js'
 import axios from 'axios';
-
+import ChildIcon from 'react-icons/lib/fa/child';
+import BirthdayCake from 'react-icons/lib/fa/birthday-cake';
+import Star from 'react-icons/lib/fa/star';
 
 
 
@@ -103,7 +105,7 @@ updateChild(){
     })
 }
 reset(){
-  axios.get(`/getonechild/${this.state.childId}`).then(response=>{
+  axios.get(`/getonechild/${this.props.match.params.id}`).then(response=>{
     console.log('we getting kids back?', response)
     this.setState({
       childName: response.data[0].child_name, 
@@ -119,19 +121,20 @@ reset(){
   render() {
     return (
       
-      <div>
+      <div className = 'children-body'>
+         <Header child={this.state.parentId} name = {this.state.childName}/>
         
         <div className="Children">
-          <Header child={this.state.parentId}/>
         </div>
         <div>
           { !this.state.edit ?
           <div>
-            <div id='childName'>
-            {this.state.childName}
-            </div>
-
             <div id='childGender'>
+              {this.state.childGender === 'Female'? 
+              <ChildIcon className = "childIcon"color ={'#FF69B4'} size = {200}/>
+                :
+              <ChildIcon className = "childIcon"color ={'#7ec0ee'} size = {200}/>
+            }
             {this.state.childGender}
             </div>
 

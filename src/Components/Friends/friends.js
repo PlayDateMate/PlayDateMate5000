@@ -5,7 +5,6 @@ import './friendsSearch'
 import axios from 'axios'
 import Header from '../Header/header.js'
 import viewProfile from '../ViewProfile/viewProfile';
-import Chat from '../Chat/chat'
 
 class Friends extends Component {
   constructor(){
@@ -81,11 +80,8 @@ denyFriend(id){
 }
 
   render() {
-    
-   
-    
+
     <viewProfile id={this.state.id}/>
-  
       const sentRequests = this.state.requestsSent.map((friend, i)=>{
         return(
           <div key = {i} className = "sent">
@@ -96,14 +92,10 @@ denyFriend(id){
       })
 
       const friends = this.state.getFriends.map((friend, i) => {
-        <Chat user_id={this.state.id} friend_id={friend.id} />
         return (
           <div key = {i} className = "friend" id ='listfriend'>
             <img className = "friendProfilePicture" src={friend.image}/>
             {friend.user_name}
-            <Link to={`/chat/${friend.id}`}>
-            <button className = "viewProfile">Chat</button> 
-            </Link>
             <Link to={`/viewprofile/${friend.id}`}>
             <button className = "viewProfile">View Profile</button> 
             </Link>
