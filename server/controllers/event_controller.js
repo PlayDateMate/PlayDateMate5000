@@ -14,8 +14,15 @@ module.exports = {
         }).catch(console.log);
     },
 
-    getUserEvents: (req, res) => {
+    myEvents: (req, res) => {
         req.app.get('db').get_user_events(req.params.user_id).then((response) =>{
+            console.log(response);
+            res.status(200).send(response)
+        }).catch(console.log);
+    },
+
+    upComingEvents: (req, res) => {
+        req.app.get('db').get_upcoming_events(req.params.user_id).then((response) =>{
             console.log(response);
             res.status(200).send(response)
         }).catch(console.log);
@@ -23,12 +30,21 @@ module.exports = {
     
     cancelEvent: (req, res, next) => {
         const dbInstance = req.app.get('db');
-        const { params } = req;
-        
-    dbInstance.delete_event([params.id])
-    .then( () => res.status(200).send() )   
-    .catch( () => res.status(500).send() );   
+        const { params } = req;   
+    dbInstance.delete_event([params.id]).then( (response) => {
+        console.log('response');
+        res.status(200).send(response) 
+        }).catch( () => res.status(500).send() );   
     },
+
+    // delete: (req, res) => {
+    //     for (let i  = 0; i < contacts.length; i++) {
+    //         if (events[i].id === parseInt(req.params.id)) {
+    //             events.splice(i, 1);
+    //         }
+    //     }
+    //     res.status(200).send('Contact deleted :(');  
+    // }
 
     searchEventsByName: (req, res) => {
         const db = req.app.get('db')
@@ -47,10 +63,28 @@ module.exports = {
     },
 
     acceptEventInvite: (req, res) =>{
-        console.log('accept event invite')
+        console.log('accept event invite', req.body.sender, req.user.id)
         const db = req.app.get('db')
         db.accept_event_invite([req.body.sender, req.user.id]).then(response=>{
             console.log('You have accepted to attend an event')
+        })
+    },
+
+    getSenderEventInvite: (req, res) =>{
+        console.log('Waw!', req.user.id)
+        const db = req.app.get('db')
+        db.get_sender_event_invites([req.user.id]).then(response=>{
+            res.status(200).send(response)
+        })
+    },
+
+    getReceiverEventInvite: (req, res) =>{
+        console.log('Are my requests here yet?!', req.user.id)
+
+        const db = req.app.get('db')
+        db.get_receiver_event_invites([req.user.id]).then((response) => {
+            console.log("invite response", response)
+            res.status(200).send(response)
         })
     },
 
@@ -61,6 +95,7 @@ module.exports = {
             res.status(200).send(response)
         }).catch(console.log('here are your friends'))
     },
+
     denyEventInvite: (req, res) =>{
         console.log('Unable to attend event')
         const db = req.app.get('db')
