@@ -3,8 +3,7 @@ import './events.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../Header/header.js';
-import SearchEvents from './SearchEvents.js'
-// import FriendInvite from './FriendInvites'
+import SearchEvents from './SearchEvents.js';
 
 class Events extends Component {
   constructor(){
@@ -12,8 +11,10 @@ class Events extends Component {
 
     this.state = {
       myEvents: [],
-      getAttendingEvent: [],
+      upcomingEvents: [],
+      eventRequestSent: [],
       eventRequestReceived: [], 
+      getAttendingEvent: [],
       user_id: '',
       user_name: ''
     }
@@ -33,37 +34,60 @@ class Events extends Component {
             user_name: response.data[0].user_name,
             user_id: response.data[0].id
         })
-    }, this.getUserEvents(this.props.match.params.id))
+    } , this.getUserEvents(this.props.match.params.id) 
+      , this.getUpcomingEvents(this.props.match.params.id))
 
-    axios.get('/getAttendingEvent').then((response) => {
-      console.log('get friends', response.data)
+    axios.get('/eventRequestSent').then((response)=>{
+      console.log('event request sent',response)
       this.setState({
-        getAttendingEvent: response.data
+          eventRequestSent: response.data
+
       })
     })
+
     axios.get('/receivedEventRequest').then((response)=>{
-      console.log('get received', response.data)
+      console.log('event invite received', response)
       this.setState({
         eventRequestReceived: response.data
       })
     })
-  
-    
+
+    axios.get('/getAttendingEvent').then((response) => {
+      console.log('attending event', response)
+      this.setState({
+        getAttendingEvent: response.data
+      })
+    })
   }
 
   componentWillReceiveProps(nextProps) {
     if(!this.props.user && nextProps.user){
         // let patientID= this.props.match.params.id; // how to get the id param in the url
         this.getUserEvents(nextProps.user.user_id)
+        this.getUpcomingEvents(nextProps.user.user_id)
         console.log(nextProps.user);
     }
 }
 
 getUserEvents(user_id){
-    axios.get(`/api/user/${user_id}/myevents`).then((res) => {
+  axios.get(`/api/user/${user_id}/myevents`).then((res) => {
+      console.log(res.data)
+      this.setState({ myEvents: res.data })
+  }).catch((err) => console.log("err", err));
+}
+
+getUpcomingEvents(user_id){
+    axios.get(`/api/user/${user_id}/upcomingevents`).then((res) => {
         console.log(res.data)
-        this.setState({ myEvents: res.data })
+        this.setState({ upcomingEvents: res.data })
     }).catch((err) => console.log("err", err));
+}
+
+deleteEvent(){
+  console.log("Testtest", this.props.match.params.id);
+  axios.delete(`/api/event/${this.props.match.params.id}`).then(response => {
+  console.log("Something response")
+  }).catch(console.log)
 }
 
 acceptEventInvite(id){
@@ -77,7 +101,6 @@ acceptEventInvite(id){
     })
   })
 }
-
 denyEventInvite(id){
   axios.put('/denyeventinvite',{sender:id}).then(()=>{
     alert('You will not be attending this event')
@@ -94,31 +117,78 @@ onSubmit(event) {
   (this.state.value);
 }
   
-
   render() {
     
     const myevents = this.state.myEvents.map((event, i) => {
       return (
-      <div>
-        <Link key={i} to={`/events/${event.id}`} className="pat-tile">
-          <h4>{event.event_name}</h4>
-        </Link>
-        <div className="age_group" id="minAge">Age group: {event.age_min} - {event.age_max}</div>
-
-        <div className="date_group" >
-          <div className="date_text" id="startDate">Start Date: {event.start_date}</div>
-          <div className="date_text" id='endDate'>End Date: {event.end_date}</div>
-        </div>
-
+      
         <div>
-          <Link to={`/friendinvites/${event.id}`}><button className="my_events_btns">Invite Friends</button></Link>
-          <button className="my_events_btns">View Event</button>
-          <button className="my_events_btns">Delete Event</button>
+          <div className="event_info">
+            <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
+            <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+            <div className="event_text"> Start Date: {event.start_date}</div>
+            <div className="event_text">End Date: {event.end_date}</div>
+          </div>
+    
+          <div>
+            <button className="event_actions_btns">View Event</button>
+            <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
+            <button className="event_actions_btns">Invite Friends</button>
+          </div>
+
         </div>
-      </div>
       )
     })
 
+    const upcomingevents = this.state.upcomingEvents.map((event, i) => {
+      return (
+      
+        <div>
+          <div className="event_info">
+            <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
+            <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+            <div className="event_text"> Start Date: {event.start_date}</div>
+            <div className="event_text">End Date: {event.end_date}</div>
+          </div>
+    
+          <div>
+            <button className="event_actions_btns">View Event</button>
+            <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
+            <button className="event_actions_btns">Invite Friends</button>
+          </div>
+
+        </div>
+      )
+    })
+
+    const sentRequests = this.state.eventRequestSent.map((event, i)=>{
+      return(
+        <div key = {i}>
+          {event.event_name}
+          <button>cancel</button>
+        </div>
+      )
+    })
+
+    const receivedRequests = this.state.eventRequestReceived.map((request, i)=>{
+      return(
+        <div key ={i}>
+          {request.event_name}
+          {request.user_name}
+          <button className="accept_deny_btn" onClick={()=>this.acceptEventInvite(request.event_id)}>Accept</button>
+          <button className="accept_deny_btn" onClick={()=>this.denyEventInvite(request.id)}>Deny</button>
+        </div>
+      )
+    })
+
+    const attendingEvent = this.state.getAttendingEvent.map((friend, i) => {
+      return (
+        <div key = {i} className = "friend">
+          {friend.user_name}
+          <button className = "viewProfile">View Profile</button>
+        </div>
+      )
+    })
 
     return (
       <div className="Events">
@@ -129,6 +199,7 @@ onSubmit(event) {
         </div> <br />
 
         <div> Invitations <br/> <div className="invitations">
+            {receivedRequests}
           
         </div> </div><br />
         <div> Upcoming Events <br/> <div className="upcoming_events">
@@ -136,11 +207,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
-                <div>
-                <button>View Event</button>
-                <button>Delete Event</button>
-                <button>Invite</button>
-                </div>
+              {upcomingevents}
             </div>
           </div> 
 
@@ -151,6 +218,7 @@ onSubmit(event) {
           <div className="own_events">
             <div className="my_events">
               {myevents}
+              {upcomingevents}
             </div>
           </div> 
         </div>

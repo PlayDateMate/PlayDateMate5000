@@ -63,10 +63,34 @@
     height: 0vh;
 }
 
-.my_events_btns {
-   
+.event_actions_btns {
+    border: 1px solid grey;
+    background-color: #0abab5;
+    justify-content: space-around;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    font-size: 8px;
+    width: 20vw; 
 }
 
-.date_text {
+.accept_deny_btn {
+    border: 1px solid grey;
+    background-color: #0abab5;
+    justify-content: space-around;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    font-size: 8px;
+    width: 20vw; 
+}
+
+.event_info {
+   word-wrap: normal;
+}
+
+.event_text {
     font-size: 10px;
 }
