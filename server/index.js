@@ -15,6 +15,7 @@ const location_controller = require('./controllers/location_controller');
 const friends_controller = require('./controllers/friends_controller');
 const view_profile = require('./controllers/view_profile')
 
+
 const  {
     SERVER_PORT,
     SESSION_SECRET, 
@@ -22,7 +23,8 @@ const  {
     CLIENT_ID, 
     CLIENT_SECRET, 
     CALLBACK_URL,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    
 } = process.env;
 
 const app = express();
@@ -152,9 +154,6 @@ app.get('/eventId', event_controller.eventId)
 //******************** View Profile Endpoints ****************************
 
 app.get('/viewprofile/:id', view_profile.viewProfile)
-
-
-
 
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));

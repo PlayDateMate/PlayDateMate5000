@@ -13,7 +13,8 @@ import SearchEvents from './Components/Events/SearchEvents';
 import AddChild from './Components/Children/addChildren';
 import UpdateChildren from './Components/Children/updateChildren';
 import FriendInvites from './Components/Events/FriendInvites';
-import ViewProfile from './Components/ViewProfile/viewProfile'
+import ViewProfile from './Components/ViewProfile/viewProfile';
+
 
 class App extends Component {
   render() {
@@ -35,7 +36,8 @@ class App extends Component {
             <Route path = '/addchild/:id' component = {AddChild} />
             <Route path = '/updatechild/:id' component = {AddChild} />
             <Route path = '/friendinvites/:id' component = {FriendInvites} />   
-            <Route path = '/viewprofile/:id' component = {ViewProfile} />   
+            <Route path = '/viewprofile/:id' component = {ViewProfile} />
+            
 
 
           </Switch>
