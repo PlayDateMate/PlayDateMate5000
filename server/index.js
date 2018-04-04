@@ -8,12 +8,14 @@ const Auth0Strategy = require('passport-auth0');
 const massive = require('massive');
 const axios = require('axios');
 const path = require('path');
+const Pusher = require('pusher');
 
 const children_controller = require('./controllers/children_controller');
 const event_controller = require('./controllers/event_controller');
 const location_controller = require('./controllers/location_controller');
 const friends_controller = require('./controllers/friends_controller');
-const view_profile = require('./controllers/view_profile')
+const view_profile = require('./controllers/view_profile');
+const messages_controller = require('./controllers/chat_controller');
 
 
 const  {
@@ -34,7 +36,16 @@ const app = express();
 
 app.use(cors());
 
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
+const pusher = new Pusher({
+    app_id : process.env.APP_ID,
+    key : process.env.CHAT_KEY,
+    secret : process.env.CHAT_SECRET,
+    cluster : process.env.CLUSTER,
+    encrypted: true
+})
 
 app.use(session({
     secret: SESSION_SECRET,
@@ -154,6 +165,11 @@ app.get('/eventId', event_controller.eventId)
 //******************** View Profile Endpoints ****************************
 
 app.get('/viewprofile/:id', view_profile.viewProfile)
+
+//******************** Chat Endpoints ****************************
+
+app.get('/getchat/:id', messages_controller.getMessages)
+app.post('/postchat', messages_controller.postMessage)
 
 // app.get('*', (req, res)=>{
 //     res.sendFile(path.join(__dirname, '../build/index.html'));
