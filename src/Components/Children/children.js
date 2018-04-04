@@ -135,15 +135,15 @@ reset(){
                 :
               <ChildIcon className = "childIcon"color ={'#7ec0ee'} size = {200}/>
             }
-            {this.state.childGender}
+            <div className = "childName">{this.state.childName}</div>
             </div>
-
-            <div id='childInterests'>
-            {this.state.childInterests}
-            </div>
-
-            <div>
+            <div className = 'childAge'>
+              <div className = 'ageTitle'>Age:</div>
             {this.state.childAge}
+            </div>
+            <div id='childInterests'>
+              <div className = 'interestsTitle'>Interests:</div>
+            {this.state.childInterests}
             </div>
             <div>
               <button id='updateChildButton' onClick={()=>this.editable()}>Update</button>
@@ -152,30 +152,34 @@ reset(){
           
           :
           <div>
-          <div>
-                <h1>Update</h1>
+          <div className = 'updatePage'>
+                <div className = 'update'>Update</div>
+            
+            <div>
+                <div>Name:</div>
+                 <input className = 'updateNameInput'id='updateNameInput' value={this.state.childName} onChange={(e)=>{this.childName(e.target.value)}}></input>
             </div>
             <div>
-                Name: <input id='updateNameInput' value={this.state.childName} onChange={(e)=>{this.childName(e.target.value)}}></input>
+                Date of Birth: <input className = 'changeBirthday' type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
             </div>
-            <div>
-                Date of Birth: <input type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
-            </div>
-            <div>
-                Gender: <select onChange={(e)=>{this.childGender(e.target.value)}}>
+            <div className = "Gender">
+                <div>Gender:</div> 
+                            <select className = 'selectGender'onChange={(e)=>{this.childGender(e.target.value)}}>
                             <option></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
             </div>
-            <div>
-            Interests: <input id='updateInterestsInput' value={this.state.childInterests} onChange={(e)=>{this.childInterests(e.target.value)}}></input>
+            <div className = 'updateInterests'>
+            <div>Interests:</div>
+             <input id='updateInterestsInput' value={this.state.childInterests} onChange={(e)=>{this.childInterests(e.target.value)}}></input>
             </div>
             
-            <button onClick={this.updateChild}>Submit</button>
-            <button id='cancelUpdateButton' onClick={this.reset}>Cancel</button>
+            <button className = 'childupdateButton'onClick={this.updateChild}>Save</button>
+            <button id='cancelUpdateButton' className = 'childupdateButton' onClick={this.reset}>Cancel</button>
 
            
+            </div>
             </div>
           }
           
