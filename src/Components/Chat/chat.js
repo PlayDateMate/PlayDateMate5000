@@ -25,12 +25,12 @@ class Chat extends Component {
     this.handleTextChange = this.handleTextChange.bind(this); 
 }
 componentDidMount(){
-    axios.get(`/getchat/${this.props.match.params.id}`).then(response=>{
+    setInterval(()=>{axios.get(`/getchat/${this.props.match.params.id}`).then(response=>{
         console.log('chats???', response)
         this.setState({
             chats: response.data
         })
-    })
+    })},1000) 
     // const pusher = new Pusher(process.env.REACT_APP_CHAT_KEY, {
     //     cluster: process.env.REACT_APP_CLUSTER,
     //     encrypted: true
