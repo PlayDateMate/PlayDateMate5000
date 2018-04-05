@@ -1,0 +1,130 @@
+.Children{
+    display: flex;
+    width: 100vw;
+}
+.children-body{
+    height: 100vh;
+    font: 'Montserrat';
+    /* background: url('Cloud.svg'); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#childGender{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.childIcon{
+    margin-top: 20px;
+    border-radius: 200px;
+    border: 3px solid yellow;
+    padding:10px;
+    background: white;
+}
+
+#childInterests{
+    background: white;
+    /* border: 3px solid #0abab5; */
+    border-radius: 400px;
+    width:200px;
+    padding: 10px;
+    font-family: 'Montserrat';
+    margin-left:20px;
+
+}
+.interestsTitle{
+    font-family: 'Montserrat';
+    font-size: 30px;
+    /* border-bottom: 1px solid black; */
+}
+.ageTitle{
+    font-family: 'Montserrat';
+    font-size: 30px;
+}
+.age{
+    background: white;
+    border-radius: 400px;
+    width:200px;
+    padding: 10px;
+    font-family: 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width:100px;
+    margin-left:45px;
+}
+#updateChildButton{
+    margin-top: 40px;
+    font-size: 30px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+}
+.childName{
+    font-family: 'Montserrat';
+    font-weight: 100;
+    font-size: 70px;
+    border-bottom: 1px solid #0abab5;
+    margin-bottom: 20px;
+}
+.update{
+    font-family: 'Montserrat';
+    font-size: 40px;
+    border-bottom: 1px solid #0abab5;
+    font-weight: 100;
+    margin-bottom: 20px;
+
+}
+.updatePage{
+    display:flex;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    flex-direction: column;
+    font-weight: 100;
+    align-items: center;
+}
+.updateNameInput{
+
+    font-size: 32px;
+    font-weight: 100;
+    border: .5px solid black;
+}
+.changeBirthday
+{
+    font-size: 30px;
+    font-weight: 100;
+    border: .5px solid black;
+    font-family: 'Montserrat';
+}
+.selectGender{
+    font-size: 30px;
+    font-weight: 100;
+    border: .5px solid black;
+    font-family: 'Montserrat';
+}
+.updateInterests{
+    font-size: 30px;
+    font-weight: 100;
+    font-family: 'Montserrat';
+}
+#updateInterestsInput{
+    font-size: 25px;
+    font-weight: 100;
+    border: .5px solid black;
+    font-family: 'Montserrat';
+    width: 90vw;
+}
+.childupdateButton{
+    margin-top: 40px;
+    font-size: 30px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+}
