@@ -1,7 +1,7 @@
 delete from event_invites
-where event_id = $1;
+where receiver = $1 
+and id = $2;
 
-delete from events
-where id = $1;
-
--- first line for upcoming events
+select * from attending_event
+join events on event_id = events.id
+where attending_event.user_id = $1;
