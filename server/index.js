@@ -106,7 +106,6 @@ app.get('/getUserInfo', (req, res)=>{
     }).catch('cannot find user!')
 })
 
-
 //******************* Children Endpoints ***************************
 app.get('/getchildren/:id', children_controller.getChild);
 app.post('/addchild', children_controller.addChild);

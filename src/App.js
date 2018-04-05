@@ -37,9 +37,6 @@ class App extends Component {
             <Route path = '/updatechild/:id' component = {AddChild} />
             <Route path = '/friendinvites/:id' component = {FriendInvites} />   
             <Route path = '/viewprofile/:id' component = {ViewProfile} />
-            
-
-
           </Switch>
         
         </HashRouter>
