@@ -119,26 +119,28 @@ onSubmit(event) {
   
   render() {
     
-    const myevents = this.state.myEvents.map((event, i) => {
-      return (
+    // const myevents = this.state.myEvents.map((event, i) => {
+    //   return (
       
-        <div>
-          <div className="event_info">
-            <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
-            <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
-            <div className="event_text"> Start Date: {event.start_date}</div>
-            <div className="event_text">End Date: {event.end_date}</div>
-          </div>
+    //     <div>
+    //       <div className="event_info">
+    //         <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
+    //         <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+    //         <div className="event_text"> Start Date: {event.start_date}</div>
+    //         <div className="event_text">End Date: {event.end_date}</div>
+    //       </div>
     
-          <div>
-            <button className="event_actions_btns">View Event</button>
-            <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
-            <button className="event_actions_btns">Invite Friends</button>
-          </div>
+    //       <div>
+    //         <button className="event_actions_btns">View Event</button>
+    //         <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
+    //         <Link to={`/friendinvites/${this.props.match.params.id}`}>
+    //         <button className="event_actions_btns">Invite Friends</button>
+    //         </Link>
+    //       </div>
 
-        </div>
-      )
-    })
+    //     </div>
+    //   )
+    // })
 
     const upcomingevents = this.state.upcomingEvents.map((event, i) => {
       return (
@@ -154,7 +156,9 @@ onSubmit(event) {
           <div>
             <button className="event_actions_btns">View Event</button>
             <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
+            <Link to={`/friendinvites/${this.props.match.params.id}`}>
             <button className="event_actions_btns">Invite Friends</button>
+            </Link>
           </div>
 
         </div>
@@ -206,14 +210,14 @@ onSubmit(event) {
 
           <div className="own_events">
             <div className="my_events">
-              {myevents}
+              {/* {myevents} */}
               {upcomingevents}
             </div>
           </div> 
 
         </div> </div> <br />
 
-        <div> 
+        {/* <div> 
           <div>My Events </div> 
           <div className="own_events">
             <div className="my_events">
@@ -221,7 +225,7 @@ onSubmit(event) {
               {upcomingevents}
             </div>
           </div> 
-        </div>
+        </div> */}
 
       </div>
     );
