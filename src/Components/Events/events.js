@@ -83,10 +83,12 @@ getUpcomingEvents(user_id){
     }).catch((err) => console.log("err", err));
 }
 
-deleteEvent(){
+deleteEvent(id){
   console.log("Testtest", this.props.match.params.id);
-  axios.delete(`/api/event/${this.props.match.params.id}`).then(response => {
-  console.log("Something response")
+  axios.delete(`/api/event/${id}`).then(response => {
+  this.setState({
+    upcomingEvents: response.data
+  })
   }).catch(console.log)
 }
 
@@ -154,7 +156,7 @@ onSubmit(event) {
           </div>
     
           <div>
-            <button className="event_actions_btns">View Event</button>
+            {/* <button className="event_actions_btns">View Event</button> */}
             <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
             <Link to={`/friendinvites/${this.props.match.params.id}`}>
             <button className="event_actions_btns">Invite Friends</button>
@@ -199,7 +201,7 @@ onSubmit(event) {
         <Header events = {this.state.user_id}/>
         <div className = "event_btns">
           <Link to={`/createEvent/${this.state.user_id}`}><button className="events_buttons" onClick={ () => this.onSubmit() }>Create Event</button></Link>
-          <Link to={`/searchevents/${this.state.user_id}`}><button className="events_buttons" onClick={ () => this.onSubmit() }>Search Events</button></Link>
+          {/* <Link to={`/searchevents/${this.state.user_id}`}><button className="events_buttons" onClick={ () => this.onSubmit() }>Search Events</button></Link> */}
         </div> <br />
 
         <div> Invitations <br/> <div className="invitations">
