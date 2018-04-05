@@ -1,0 +1,44 @@
+.body{
+    font-family:'Montserrat';
+    font-size: 20px;
+    display:flex;
+    flex-direction: column;
+
+}
+#nameInputBox{
+    margin-top: 20px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+.createDate{
+    margin-top: 20px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+.createGender{
+    margin-top: 20px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+.createInterests{
+    margin-top: 20px;
+    border: 1px solid black;
+    font-size: 20px;
+    width: 200px;
+}
+.createSubmit{
+    margin-top: 40px;
+    font-size: 30px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+}
+.createBack{
+    margin-top: 20px;
+    font-size: 30px;
+    border: 1px solid #0abab5;
+    background: #0abab5;
+    color: white;
+    border-radius: 10px;
+}
