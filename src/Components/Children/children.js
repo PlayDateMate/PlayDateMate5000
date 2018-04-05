@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './children.css';
 import Header from '../Header/header.js'
 import axios from 'axios';
-
+import ChildIcon from 'react-icons/lib/fa/child';
+import BirthdayCake from 'react-icons/lib/fa/birthday-cake';
+import Star from 'react-icons/lib/fa/star';
 
 
 
@@ -103,7 +105,7 @@ updateChild(){
     })
 }
 reset(){
-  axios.get(`/getonechild/${this.state.childId}`).then(response=>{
+  axios.get(`/getonechild/${this.props.match.params.id}`).then(response=>{
     console.log('we getting kids back?', response)
     this.setState({
       childName: response.data[0].child_name, 
@@ -119,28 +121,29 @@ reset(){
   render() {
     return (
       
-      <div>
+      <div className = 'children-body'>
+         <Header child={this.state.parentId} name = {this.state.childName}/>
         
         <div className="Children">
-          <Header child={this.state.parentId}/>
         </div>
         <div>
           { !this.state.edit ?
           <div>
-            <div id='childName'>
-            {this.state.childName}
-            </div>
-
             <div id='childGender'>
-            {this.state.childGender}
+              {this.state.childGender === 'Female'? 
+              <ChildIcon className = "childIcon"color ={'#FF69B4'} size = {200}/>
+                :
+              <ChildIcon className = "childIcon"color ={'#7ec0ee'} size = {200}/>
+            }
+            <div className = "childName">{this.state.childName}</div>
             </div>
-
-            <div id='childInterests'>
-            {this.state.childInterests}
-            </div>
-
-            <div>
+            <div className = 'childAge'>
+              <div className = 'ageTitle'>Age:</div>
             {this.state.childAge}
+            </div>
+            <div id='childInterests'>
+              <div className = 'interestsTitle'>Interests:</div>
+            {this.state.childInterests}
             </div>
             <div>
               <button id='updateChildButton' onClick={()=>this.editable()}>Update</button>
@@ -149,30 +152,34 @@ reset(){
           
           :
           <div>
-          <div>
-                <h1>Update</h1>
+          <div className = 'updatePage'>
+                <div className = 'update'>Update</div>
+            
+            <div>
+                <div>Name:</div>
+                 <input className = 'updateNameInput'id='updateNameInput' value={this.state.childName} onChange={(e)=>{this.childName(e.target.value)}}></input>
             </div>
             <div>
-                Name: <input id='updateNameInput' value={this.state.childName} onChange={(e)=>{this.childName(e.target.value)}}></input>
+                Date of Birth: <input className = 'changeBirthday' type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
             </div>
-            <div>
-                Date of Birth: <input type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
-            </div>
-            <div>
-                Gender: <select onChange={(e)=>{this.childGender(e.target.value)}}>
+            <div className = "Gender">
+                <div>Gender:</div> 
+                            <select className = 'selectGender'onChange={(e)=>{this.childGender(e.target.value)}}>
                             <option></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
             </div>
-            <div>
-            Interests: <input id='updateInterestsInput' value={this.state.childInterests} onChange={(e)=>{this.childInterests(e.target.value)}}></input>
+            <div className = 'updateInterests'>
+            <div>Interests:</div>
+             <input id='updateInterestsInput' value={this.state.childInterests} onChange={(e)=>{this.childInterests(e.target.value)}}></input>
             </div>
             
-            <button onClick={this.updateChild}>Submit</button>
-            <button id='cancelUpdateButton' onClick={this.reset}>Cancel</button>
+            <button className = 'childupdateButton'onClick={this.updateChild}>Save</button>
+            <button id='cancelUpdateButton' className = 'childupdateButton' onClick={this.reset}>Cancel</button>
 
            
+            </div>
             </div>
           }
           
