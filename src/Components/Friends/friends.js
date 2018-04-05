@@ -54,7 +54,7 @@ class Friends extends Component {
     })
 }
 
-
+//comment
 
 acceptFriend(id){
   axios.put('/acceptfriend',{sender:id}).then(()=>{
