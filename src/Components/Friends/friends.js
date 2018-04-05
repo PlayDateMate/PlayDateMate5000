@@ -5,11 +5,10 @@ import './friendsSearch'
 import axios from 'axios'
 import Header from '../Header/header.js'
 import viewProfile from '../ViewProfile/viewProfile';
-
+import Chat from '../Chat/chat'
 class Friends extends Component {
   constructor(){
     super();
-
     this.state = {
       user_name: '',
       id: '',
@@ -33,10 +32,8 @@ class Friends extends Component {
       console.log('get sent',response)
       this.setState({
           requestsSent: response.data
-
       })
     })
-
             /*===== GET CURRENT FRIENDS =====*/
     axios.get('/getFriends').then((response) => {
       console.log('get friends', response)
@@ -45,7 +42,6 @@ class Friends extends Component {
       })
     })
                     /*===== END =====*/
-
     axios.get('/receivedRequests').then((response)=>{
       console.log('get received', response)
       this.setState({
@@ -53,9 +49,6 @@ class Friends extends Component {
       })
     })
 }
-
-//comment
-
 acceptFriend(id){
   axios.put('/acceptfriend',{sender:id}).then(()=>{
     alert('You have accepted this friend')
@@ -78,10 +71,12 @@ denyFriend(id){
     })
   })
 }
-
   render() {
-
+    
+   
+    
     <viewProfile id={this.state.id}/>
+  
       const sentRequests = this.state.requestsSent.map((friend, i)=>{
         return(
           <div key = {i} className = "sent">
@@ -90,12 +85,15 @@ denyFriend(id){
           </div>
         )
       })
-
       const friends = this.state.getFriends.map((friend, i) => {
+        <Chat user_id={this.state.id} friend_id={friend.id} />
         return (
           <div key = {i} className = "friend" id ='listfriend'>
             <img className = "friendProfilePicture" src={friend.image}/>
             {friend.user_name}
+            <Link to={`/chat/${friend.id}`}>
+            <button className = "viewProfile">Chat</button> 
+            </Link>
             <Link to={`/viewprofile/${friend.id}`}>
             <button className = "viewProfile">View Profile</button> 
             </Link>
@@ -111,12 +109,10 @@ denyFriend(id){
           </div>
         )
       })
-
     return (
       <div className="Friends">
         <Header Friends = {this.state.id}/>
         <section className='body'>
-
           <Link to={`/friendsearch/${this.state.id}`} id="id"><button className="find-friends-button">Find Friends</button></Link>
         <div className = "requests">
           <div className = 'requestsTitle'>Requests</div>
@@ -138,12 +134,9 @@ denyFriend(id){
             {friends}
           </div>
         
-
         </section>
-
       </div>
     );
   }
 }
-
 export default Friends;
