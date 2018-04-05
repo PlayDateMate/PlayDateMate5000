@@ -8,12 +8,12 @@ describe('check event', ()=>{
     })
 
     it('event is string', ()=>{
-        expect(logic.isFriend(3))
+        expect(logic.isEvent(3))
             .toEqual(false)
     })
 
     it('event is string', ()=>{
-        expect(logic.isFriend(''))
+        expect(logic.isEvent(''))
             .toEqual(true)
     })
 
@@ -24,15 +24,15 @@ describe('check event', ()=>{
 describe('check event', ()=>{
 
     it('event is string', ()=>{
-        expect(logic.friendId(4))
+        expect(logic.eventId(4))
             .toEqual(true)
     })
     it('event is string', ()=>{
-        expect(logic.friendId('4'))
+        expect(logic.eventId('4'))
             .toEqual(false)
     })
     it('event is string', ()=>{
-        expect(logic.friendId(true))
+        expect(logic.eventId(true))
             .toEqual(false)
     })
 
