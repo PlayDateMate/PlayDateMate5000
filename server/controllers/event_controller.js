@@ -31,7 +31,7 @@ module.exports = {
     cancelEvent: (req, res, next) => {
         const dbInstance = req.app.get('db');
         const { params } = req;   
-    dbInstance.delete_event([params.id]).then( (response) => {
+    dbInstance.delete_event([req.user.id, params.id]).then( (response) => {
         console.log('response');
         res.status(200).send(response) 
         }).catch( () => res.status(500).send() );   
