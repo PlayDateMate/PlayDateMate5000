@@ -71,14 +71,14 @@ class Events extends Component {
 
 getUserEvents(user_id){
   axios.get(`/api/user/${user_id}/myevents`).then((res) => {
-      console.log(res.data)
+      console.log('My events:',res.data)
       this.setState({ myEvents: res.data })
   }).catch((err) => console.log("err", err));
 }
 
 getUpcomingEvents(user_id){
     axios.get(`/api/user/${user_id}/upcomingevents`).then((res) => {
-        console.log(res.data)
+        console.log('UpComing Events:',res.data)
         this.setState({ upcomingEvents: res.data })
     }).catch((err) => console.log("err", err));
 }
@@ -126,6 +126,7 @@ onSubmit(event) {
       
         <div>
           <div className="event_info">
+<<<<<<< HEAD
             <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
             <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
             <div className="event_text"> Start Date: {event.start_date}</div>
@@ -134,12 +135,26 @@ onSubmit(event) {
     
           <div>
             <button className="event_actions_btns">View Event</button>
+=======
+            <Link key={i} to={`/events/${event.id}`} ><h4>{event.event_name}</h4></Link>
+            <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+            <div className="event_text"> Start Date: {event.start_date.split('T').shift()}</div>
+            <div className="event_text">End Date: {event.end_date.split('T').shift()}</div>
+          </div>
+    
+          <div>
+            {/* <button className="event_actions_btns">View Event</button> */}
+>>>>>>> master
             <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
             <Link to={`/friendinvites/${this.props.match.params.id}`}>
             <button className="event_actions_btns">Invite Friends</button>
             </Link>
           </div>
+<<<<<<< HEAD
 
+=======
+          <div className="event_divider"></div>
+>>>>>>> master
         </div>
       )
     })
@@ -149,14 +164,15 @@ onSubmit(event) {
       
         <div>
           <div className="event_info">
-            <Link key={i} to={`/events/${event.id}`} className="pat-tile"><h4>{event.event_name}</h4></Link>
+            <Link key={i} to={`/events/${event.id}`} className="event_name"><h2>{event.event_name}</h2></Link>
             <div className="event_text"> Age group: {event.age_min} - {event.age_max}</div>
+            {/* <div className="event_text"> Start Date: {typeof event.start_date}</div> */}
             <div className="event_text"> Start Date: {event.start_date}</div>
             <div className="event_text">End Date: {event.end_date}</div>
           </div>
     
           <div>
-            {/* <button className="event_actions_btns">View Event</button> */}
+            {/* <button className="event_actions_btns">View Event<ß/button> */}
             <button className="event_actions_btns" onClick={()=> {this.deleteEvent(event.id)}}>Delete Event</button>
             <Link to={`/friendinvites/${this.props.match.params.id}`}>
             <button className="event_actions_btns">Invite Friends</button>

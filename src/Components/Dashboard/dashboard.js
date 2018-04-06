@@ -3,6 +3,7 @@ import './dashboard.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import Header from '../Header/header.js'
+// import BubbleBackground from './BubblesAnnimation.svg'
 
 
 
@@ -52,6 +53,7 @@ class Dashboard extends Component {
     return (
       <div className='dashboardMain'>
         <Header dashboard = {this.state.id}/>
+        <div className = "body">
         <div className="dashboardBody">
           <div className = "welcome-message"> Welcome, {this.state.name}.</div>
           <Link to={`/friends/${this.state.id}`}>
@@ -61,7 +63,10 @@ class Dashboard extends Component {
             <button className = "dashboardButton">Events</button>
           </Link>
         </div>
+        </div>
+        
       </div>
+      
     );
   }
 }

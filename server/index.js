@@ -32,7 +32,7 @@ const  {
 const app = express();
 
 
-app.use(express.static(__dirname + "/../build"));
+// app.use(express.static(__dirname + "/../build"));
 
 app.use(cors());
 
@@ -116,7 +116,6 @@ app.get('/getUserInfo', (req, res)=>{
         res.status(200).send(response)
     }).catch('cannot find user!')
 })
-
 
 //******************* Children Endpoints ***************************
 app.get('/getchildren/:id', children_controller.getChild);

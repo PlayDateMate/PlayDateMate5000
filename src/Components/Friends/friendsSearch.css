@@ -39,11 +39,13 @@
     border-color: black;
     border-style: solid;
     height: 40vh;
-    width: 90vw;
+    width: 85vw;
+    margin-left: 7vw;
 }
 
 .search{
-    margin: 0px 0px 0px 10px
+    margin: 10px 0px 10px 25px
+    
 }
 
 .search-by {
