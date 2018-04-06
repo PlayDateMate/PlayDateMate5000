@@ -1,0 +1,31 @@
+.chatList{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.currentMsg{
+    margin-top:5px;
+    margin-right: 100px;
+    background: #09a29d;
+    border-radius: 100px;
+    margin-bottom: 5px;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    color: white;
+    padding: 10px solid;
+
+}
+.friendMsg{
+    margin-top: 5px;
+    margin-left: 100px;
+    border-radius: 100px;
+    margin-bottom: 5px;
+    width: 300px;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    border: 1px solid #06716e;
+    color: #06716e;
+    padding: 10px solid;
+}
+
