@@ -153,7 +153,7 @@ export default class CreateEvent extends Component{
                 </div>   
                        
                     <div className="dates">
-                        <label>Start Date<input type="date" onChange={(e) => this.startdateInput(e.target.value)} /></label>
+                        <label>Start Date<input type="date" className = "date"nonChange={(e) => this.startdateInput(e.target.value)} /></label>
                         <label>End Date<input className = "date"placeholder="End Date" type="date" onChange={(e) => this.enddateInput(e.target.value)}/></label>
                     </div>
                     <div className="ages">
