@@ -38,8 +38,9 @@ class FriendsSearch extends Component {
     console.log("Friend ID:",val)
     console.log("User ID:", (this.props.match.params.id * 1))
     axios.post('/addfriend', {user_id: this.state.id, friend_id: val}).then(response=>{
-      console.log(response.data)
+      console.log('yay')
     })
+    alert('Friend Added');
   }
                           /*===== End =====*/
 
