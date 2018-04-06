@@ -7,7 +7,6 @@ import Header from '../Header/header.js'
 import ChildIcon from 'react-icons/lib/fa/child'
 
 
-
 class profile extends Component {
   constructor(props){
     super(props);
@@ -71,7 +70,7 @@ onSave(){
 
           <span id='childAge'>{child.age.years ? `${child.age.years} years old` : `${child.age.months} months old`}</span>
           <Link to={`/children/${child.id}`} >
-          <button className = 'updateButton'>Update</button>
+          <button className = 'updateButton'>View</button>
           </Link>
         </div>
       )
@@ -99,7 +98,10 @@ onSave(){
           <Link to={`/addchild/${this.props.match.params.id}`}>
           <button className = "addChildButton">Add Child +</button>
           </Link>
+
+          
         </div>
+        
       </div>
     );
   }

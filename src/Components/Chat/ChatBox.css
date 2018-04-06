@@ -1,26 +1,14 @@
-ul {
-    list-style-type: none;
-  }
-  .chat {
-    margin-top: 50px;
-  }
-  .chatMessage {
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 20px auto;
-    width: 700px;
-    display: table;
-  }
-  .box {
-    background-color: #ffffff;
-    padding: 20px;
-    border-bottom: 1px solid #cccccc;
-  }
-  .imageHolder {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 20px;
-    right: 50px;
-  }
+.chatBox{
+  display: flex;
+  justify-content: center;
+}
+.chatInput{
+  border: 1px solid #06716e;
+  margin-top: 100px;
+  height: 35px;
+  width: 350px;
+  border-radius:50px;
+  font-size: 20px;
+  position: absolute;
+  margin-bottom: 20px;
+}
