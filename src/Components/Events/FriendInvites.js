@@ -82,7 +82,7 @@ class FriendInvites extends Component {
       return(
         <div>
           {friend.user_name}
-          <button onClick={() => this.addFriendToEvent(friend.id)} >Invite</button>
+          <button onClick={() => this.addFriendToEvent(friend.id)}>Invite</button>
         </div>
       )
     })
