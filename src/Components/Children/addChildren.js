@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './children.css';
+import './addChildren.css';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Header from '../Header/header.js';
@@ -70,29 +70,29 @@ class AddChildren extends Component {
 
     render() {
         return (
-        <div>
+        <div className = 'body'>
             <Header addChild={this.state.user_id}/>
             <div>
                 Name: <input id="nameInputBox" onChange={(e)=>{this.childName(e.target.value)}}></input>
             </div>
             <div>
-                Date of Birth: <input type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
+                Date of Birth: <input className= 'createDate'type="date" onChange={(e)=>{this.childDob(e.target.value)}}></input>
             </div>
             <div>
-                Gender: <select onChange={(e)=>{this.childGender(e.target.value)}}>
+                Gender: <select className= 'createGender' onChange={(e)=>{this.childGender(e.target.value)}}>
                             <option></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
             </div>
             <div>
-            Interests: <input id='interestsInputBox' onChange={(e)=>{this.childInterests(e.target.value)}}></input>
+            Interests: <input className = 'createInterests'id='interestsInputBox' placeholder = 'ex: animals, arts and crafts, cars'onChange={(e)=>{this.childInterests(e.target.value)}}></input>
             </div>
             
-            <button onClick={this.submitNew}>Submit</button>
+            <button className= 'createSubmit' onClick={this.submitNew}>Submit</button>
 
             <Link to={`/profile/${this.props.match.params.id}`}>
-                <button id='cancelAddChild'>Back</button>
+                <button className= 'createBack'id='cancelAddChild'>Back</button>
             </Link>
             
         </div>
